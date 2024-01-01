@@ -7,12 +7,13 @@ public class Bullet : MonoBehaviour
     public float speed=0;
     public int delayTime=0;
     public float lifeSpan = 0;
+    public int damage = 0;
     private void Awake()
     {
     }
     void Start()
     {
-        
+        this.transform.tag = "bullet";
     }
 
     float timer = 0;
