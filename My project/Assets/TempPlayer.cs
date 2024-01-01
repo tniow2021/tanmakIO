@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TempPlayer : MonoBehaviour
 {
+    public string UserName = "´ã¿µ";
     public float moveSpeed = 0;
     public Bullet tempOriginalBullet1;
 
     public BulletManager bm;
     void Start()
     {
-        
     }
     void Update()
     {
