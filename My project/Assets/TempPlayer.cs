@@ -42,7 +42,6 @@ public class TempPlayer : MonoBehaviour
             bool Iscomplite =
                 bm.request(bulletForm, tempOriginalBullet1, i*0.05f, transform);
             if (Iscomplite is false) 디버깅.불렛매니저의리퀘스트함수가실패함();
-    }
-        
+        }
     }
 }

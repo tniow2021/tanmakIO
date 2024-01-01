@@ -7,9 +7,6 @@ using UnityEngine;
 
 public class Network : MonoBehaviour
 {
-    //임시
-    public TempPlayer pppppppp;
-
     //일단 실험으로 보내야할 정보: 플레이어의 좌표값.
     //이는 플레이어가 맵에 존재할 때의 얘기이다. 
     Socket client = 
@@ -23,7 +20,6 @@ public class Network : MonoBehaviour
     }
     void Start()
     {
-        players.Add(pppppppp);//임시
         client.Connect(ServerIP);
         print("서버 연결성공");
     }
