@@ -3,7 +3,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-
 static class Program
 {
     static void Main()
@@ -48,7 +47,9 @@ class Server
         foreach (Socket client in clients)
         {
             int n=client.Receive(buff);
-            Receive(buff, n);
+            string msg= Receive(buff, n);
+
+            client.Send(Encoding.UTF8.GetBytes("냥냥이"));
         }
         //보내기(추후)
         //출력하기
@@ -57,10 +58,14 @@ class Server
     }
 
 
-    void Receive(byte[] data,int n)
+    string Receive(byte[] data,int n)
     {
         string msg = Encoding.UTF8.GetString(data, 0, n);
         Console.WriteLine(msg);
+        return msg;
     }
-
+    void Send(string msg)
+    {
+        
+    }
 }

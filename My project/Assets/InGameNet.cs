@@ -7,7 +7,7 @@ using UnityEngine;
 public class InGameNet : MonoBehaviour
 {
     List<TempPlayer> players = new List<TempPlayer>();
-    Network network = GameManager.Instance.network;
+    Network network = GameManager.GetNetwork();
 
     public void Update()
     {
@@ -15,7 +15,6 @@ public class InGameNet : MonoBehaviour
         {
             SendTransform(player);
         }
-        print(network.Recieve());
     }
     public void AccessRequest(TempPlayer player)
     {
@@ -26,6 +25,5 @@ public class InGameNet : MonoBehaviour
         Vector3 XYZ = player.transform.position;
         string msg = player.UserName + ": " + XYZ.ToString() + "\n";
         byte[] data = Encoding.UTF8.GetBytes(msg);
-        network.Send(data);
     }
 }
