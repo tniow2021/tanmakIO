@@ -26,7 +26,7 @@ public class Network
             new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         ServerIP = new IPEndPoint(connectAddress, _port);
         port = _port;
-
+        
         //Start
         client.Connect(ServerIP);
         MonoBehaviour.print("서버 연결성공");

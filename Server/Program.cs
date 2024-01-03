@@ -8,8 +8,7 @@ static class Program
     static void Main()
     {
         Console.WriteLine("프로그램 시작");
-        Server server = new Server(_port:2024);
-        server.Start(1000);
+        Server server = new Server(_port:2024,_maxUser:1000);
         while (true)
         {
             int onlineUserCount= server.Update();
@@ -25,35 +24,16 @@ class Server
     Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
     //(추후) 최적화
     List<Socket> clients = new List<Socket>();
-    public Server(int _port)
+    int maxUser = 0;
+    public Server(int _port, int _maxUser)
     {
+        maxUser= _maxUser;
         serverSocket.Bind(new IPEndPoint(IPAddress.Any, _port));
         serverSocket.Listen(100);
-    }
-    public void Start(int maxUser)
-    {
-        Console.WriteLine("접속받는 중...현재:{0}명", clients.Count);
-        while (clients.Count < maxUser)
-        {
-            Socket client=serverSocket.Accept();
-            clients.Add(client);
-            Console.WriteLine("접속받는 중...현재:{0}명", clients.Count);
-        }
+        serverSocket.Blocking = false;
     }
     public int Update()
     {
-        //듣기
-        byte[]buff = new byte[1024];
-        foreach (Socket client in clients)
-        {
-            int n=client.Receive(buff);
-            string msg= Receive(buff, n);
-
-            client.Send(Encoding.UTF8.GetBytes("냥냥이"));
-        }
-        //보내기(추후)
-        //출력하기
-
         return clients.Count;
     }
 
