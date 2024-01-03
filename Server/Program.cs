@@ -9,7 +9,7 @@ static class Program
     {
         Console.WriteLine("프로그램 시작");
         Server server = new Server(_port:2024);
-        server.Start(1);
+        server.Start(1000);
         while (true)
         {
             int onlineUserCount= server.Update();
