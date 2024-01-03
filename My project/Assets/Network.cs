@@ -43,9 +43,9 @@ public class Network
     {
 
     }
-    void ReceiveData(out byte[]data)
+    void ReceiveData()
     {
-        data = new byte[23];
+        
     }
 
     byte[] JoinArray(byte[] a, byte[]b)
