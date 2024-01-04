@@ -25,7 +25,7 @@ public class TypeBuff
     {
         return (TypeCode)b;
     }
-    interface INetStruct
+    public interface INetStruct
     {
         public byte[] Encoding();
         public void Decoding(byte[] data);

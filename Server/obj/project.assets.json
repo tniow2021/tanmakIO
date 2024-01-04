@@ -8,24 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\gimda\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\AILAB01\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\AILAB01\\Documents\\GitHub\\tanmakIO\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Server\\Server.csproj",
-      "packagesPath": "C:\\Users\\gimda\\.nuget\\packages\\",
-      "outputPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Server\\obj\\",
+      "projectPath": "C:\\Users\\AILAB01\\Documents\\GitHub\\tanmakIO\\Server\\Server.csproj",
+      "packagesPath": "C:\\Users\\AILAB01\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AILAB01\\Documents\\GitHub\\tanmakIO\\Server\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\gimda\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\AILAB01\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
