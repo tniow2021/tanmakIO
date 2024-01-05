@@ -45,7 +45,7 @@ public class BulletManager : MonoBehaviour
         timer += Time.deltaTime;
 
         CreateCherk();
-        print(theWaittings.Count);
+        //print(theWaittings.Count);
     }
     void CreateCherk()
     {

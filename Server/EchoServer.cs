@@ -68,5 +68,3 @@ class EchoServer
         AcceptStart();
     }
 }
-
-class Delimiter
