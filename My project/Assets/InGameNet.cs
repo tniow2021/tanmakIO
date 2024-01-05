@@ -9,7 +9,8 @@ public class InGameNet : MonoBehaviour
      * 
      * player는 AccessRequest로 자기를 players에 등록한다.
      */
-    List<Player> players = new List<Player>();
+    Player players;
+    public List<OtherPlayer>otherPlayers=new List<OtherPlayer>();
     private void Start()
     {
         print("초기데이터 보냄");
@@ -23,6 +24,7 @@ public class InGameNet : MonoBehaviour
             UserTransform ut=(UserTransform)st;
             print(ut.x + ":" + ut.y);
             Vector3 v3 = Converting.ToVector3(ut);
+            otherPlayer.transform.localPosition = v3+new Vector3(2,2);
             print("받은데이터:"+v3);
         }
         foreach (var player in players)

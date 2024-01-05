@@ -21,7 +21,6 @@ public interface INetStruct
 }
 public struct UserTransform : INetStruct
 {
-    //유저 식별자
     public float x, y;
     public UserTransform(float _x, float _y)
     {
