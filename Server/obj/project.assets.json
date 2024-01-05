@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AILAB01\\Documents\\GitHub\\tanmakIO\\Server\\Server.csproj",
-      "projectName": "Server",
-      "projectPath": "C:\\Users\\AILAB01\\Documents\\GitHub\\tanmakIO\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\AILAB01\\Documents\\GitHub\\tanmakIO\\Server\\ServerProject.csproj",
+      "projectName": "ServerProject",
+      "projectPath": "C:\\Users\\AILAB01\\Documents\\GitHub\\tanmakIO\\Server\\ServerProject.csproj",
       "packagesPath": "C:\\Users\\AILAB01\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\AILAB01\\Documents\\GitHub\\tanmakIO\\Server\\obj\\",
       "projectStyle": "PackageReference",

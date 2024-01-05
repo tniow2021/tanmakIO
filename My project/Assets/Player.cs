@@ -1,21 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TempPlayer : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public string UserName = "담영";
     public float moveSpeed = 0;
     public Bullet tempOriginalBullet1;
-
     public BulletManager bm;
     void Start()
     {
+        //최상위 오브젝트에 달려있는 InGameNet을 찾아 등록
+        transform.root.GetComponent<InGameNet>().AccessRequest(this);
     }
     void Update()
     {
         Move();
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             shoot();
         }
@@ -33,14 +32,14 @@ public class TempPlayer : MonoBehaviour
     void shoot()
     {
         Bulletform bulletForm = new Bulletform();
-        for(int i=0;i<30;i++)
+        for (int i = 0; i < 30; i++)
         {
             bulletForm.number = 1;
             bulletForm.speed = 20;
             bulletForm.lifeSpan = 5;
-            bulletForm.angle = i*12;
+            bulletForm.angle = i * 12;
             bool Iscomplite =
-                bm.request(bulletForm, tempOriginalBullet1, i*0.05f, transform);
+                bm.request(bulletForm, tempOriginalBullet1, i * 0.05f, transform);
             if (Iscomplite is false) 디버깅.불렛매니저의리퀘스트함수가실패함();
         }
     }

@@ -1,10 +1,7 @@
 using System.Net.Sockets;
 using System.Net;
-using UnityEngine;
-using System;
-using System.Runtime.InteropServices;
 
-public class Network
+public class ClientNetwork
 {
     /*
      * 데이터 송신:
@@ -23,14 +20,14 @@ public class Network
      */
     //재연결및 면결예외관리는 나중에 구현해보자.
 
-    Socket client;
+    public Socket client;
     IPEndPoint ServerIP;
     int port;
 
-    TypeBuff typeBuff;
-    public Network(IPAddress connectAddress, int _port,TypeBuff tb)
+    public TypeBuff typeBuff { get; private set; }
+    public ClientNetwork(IPAddress connectAddress, int _port)
     {
-        typeBuff = tb;
+        typeBuff = new TypeBuff(this);
         client =
             new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         ServerIP = new IPEndPoint(connectAddress, _port);
@@ -38,7 +35,12 @@ public class Network
         
         //Start
         client.Connect(ServerIP);
-        MonoBehaviour.print("서버 연결성공");
+        //MonoBehaviour.print("서버 연결성공");
+    }
+    public ClientNetwork(Socket _clinet)
+    {
+        typeBuff = new TypeBuff(this);
+        client = _clinet;
     }
 
 
@@ -47,8 +49,6 @@ public class Network
     {
         if(typeBuff.BinaryPull(out byte[] data))
         {
-
-            MonoBehaviour.print(13);
             client.Send(binaryHandler.Pack(data));
         }
     }
@@ -59,10 +59,8 @@ public class Network
     }
     void Receive()
     {
-        MonoBehaviour.print("tlqkf");
         if (client.Available>0)
         {
-            MonoBehaviour.print(-1);
 
             byte[] buff = new byte[client.Available];
             client.Receive(buff, client.Available,SocketFlags.None);
@@ -70,27 +68,9 @@ public class Network
             {
                 if(binaryHandler.UnPack(b,out byte[]binarySplited))//1바이트씩 보내면 슬라이스될 때 true와 함꼐 out.
                 {
-                    MonoBehaviour.print(-2);
                     typeBuff.BinaryPush(binarySplited);//핵심
                 }
             }
         }
-    }
-
-
-
-    byte[] JoinArray(byte[] a, byte[]b)
-    {
-        byte[] c=new byte[a.Length+b.Length];
-        int i = 0;
-        for(i=0;i<a.Length;i++)
-        {
-            c[i] = a[i];
-        }
-        for(i=a.Length;i< a.Length+b.Length;i++)
-        {
-            c[i] = b[i-a.Length];
-        }
-        return c;
     }
 }

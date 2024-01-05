@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 public class TypeBuff
 {
     /*
@@ -25,12 +22,12 @@ public class TypeBuff
      */
 
     //enum형식 TypeCode의 요소 수만큼 Queue를 만든다.
-    Network network;
+    ClientNetwork network;
     public Queue<INetStruct>[] recieveQueues
         =new Queue<INetStruct>[System.Enum.GetValues(typeof(TypeCode)).Length];
     public Queue<byte[]> SendQueues
         = new Queue<byte[]>();
-    public TypeBuff(Network _network)
+    public TypeBuff(ClientNetwork _network)
     {
         network = _network;
         for (int i=0;i< System.Enum.GetValues(typeof(TypeCode)).Length;i++)
@@ -40,9 +37,7 @@ public class TypeBuff
     }
     public void BinaryPush(byte[]data)
     {
-        MonoBehaviour.print(1);
         TypeCode typeCode = Unpacking(data);//언패킹
-        MonoBehaviour.print("구조체 코드" + typeCode);
         
         switch(typeCode)//구조체 분류
         {
@@ -59,8 +54,6 @@ public class TypeBuff
     {
         if(SendQueues.Count>0)
         {
-
-            MonoBehaviour.print(12);
             sendData = SendQueues.Dequeue();
             return true;
         }
@@ -72,7 +65,6 @@ public class TypeBuff
     }
     public void Push(INetStruct ns)
     {
-        MonoBehaviour.print(11);
         byte[] sendData = packing(ns.Encoding(), ns.GetStructType());//패킹
         SendQueues.Enqueue(sendData);
     }

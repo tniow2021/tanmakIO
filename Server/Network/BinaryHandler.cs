@@ -1,6 +1,4 @@
 using System;
-using UnityEngine;
-
 public class BinaryHandler
 {
     byte Trigger;
@@ -23,11 +21,9 @@ public class BinaryHandler
     int DataSizeCount = 0;//SizeByteBuff를 int로 변환해 저장.
     public bool UnPack(byte b, out byte[] binary)
     {
-        MonoBehaviour.print(-3);
         //if문의 순서대로 순차적으로 코드가 진행.
         if (cutState == CutState.GettingSpliter)
         {
-            MonoBehaviour.print(-4);
             if (b == Trigger)
             {
                 cutState = CutState.GettingSizeByte;
@@ -36,7 +32,6 @@ public class BinaryHandler
         }
         else if (cutState == CutState.GettingSizeByte)
         {
-            MonoBehaviour.print(-5);
             SizeByteBuff[GettingSizeByte_Count] = b;
             GettingSizeByte_Count++;
             if (GettingSizeByte_Count >= sizeByteSize)//sizeByte의 크기인 4를 넘어가면
@@ -49,7 +44,6 @@ public class BinaryHandler
         }
         else if (cutState == CutState.GettingData)
         {
-            MonoBehaviour.print(-6);
             binaryBuff[binaryBuff.Length - DataSizeCount] = b;
             DataSizeCount--;
             if (DataSizeCount <= 0)

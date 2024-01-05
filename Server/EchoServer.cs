@@ -36,7 +36,7 @@ class EchoServer
             if(canReadByteCount > 0 )
             {
                 if (canReadByteCount > 1024) Console.WriteLine("이게 뭔일임. 버퍼에 1024나 쌓임");
-                int n= client.Receive(recBuff);
+                int n= client.Receive(recBuff,canReadByteCount,SocketFlags.None);
                 if (n != canReadByteCount) Console.WriteLine("으악 Available하고 실제 읽은 바이트 수가 다르다.");
                 
                 client.Send(recBuff,canReadByteCount,SocketFlags.None);

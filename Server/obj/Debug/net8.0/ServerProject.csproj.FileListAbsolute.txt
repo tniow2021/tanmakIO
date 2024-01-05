@@ -1,0 +1,15 @@
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\obj\Debug\net8.0\ServerProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\obj\Debug\net8.0\ServerProject.AssemblyInfoInputs.cache
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\obj\Debug\net8.0\ServerProject.AssemblyInfo.cs
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\obj\Debug\net8.0\ServerProject.csproj.CoreCompileInputs.cache
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\obj\Debug\net8.0\ServerProject.sourcelink.json
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\bin\Debug\net8.0\ServerProject.exe
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\bin\Debug\net8.0\ServerProject.deps.json
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\bin\Debug\net8.0\ServerProject.runtimeconfig.json
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\bin\Debug\net8.0\ServerProject.dll
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\bin\Debug\net8.0\ServerProject.pdb
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\obj\Debug\net8.0\ServerProject.dll
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\obj\Debug\net8.0\refint\ServerProject.dll
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\obj\Debug\net8.0\ServerProject.pdb
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\obj\Debug\net8.0\ServerProject.genruntimeconfig.cache
+C:\Users\AILAB01\Documents\GitHub\tanmakIO\Server\obj\Debug\net8.0\ref\ServerProject.dll

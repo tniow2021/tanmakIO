@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B2zFDYLQhrvPNPRFtJ7+WZCR+yxZO7m50yxTJ3kwxT3agkcLnB+JlfoFI4ZDVpW59eFtS8k0VnBEIHSXnwt53g==",
+  "dgSpecHash": "DHajgC4+rSLhc5JtAnyNi7pj/otH07lYcQJontgRZd9TfVJxtUvWGIcqpPghjT0wI8m6sH2x3p//zKr7WTkEAA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\AILAB01\\Documents\\GitHub\\tanmakIO\\Server\\Server.csproj",
+  "projectFilePath": "C:\\Users\\AILAB01\\Documents\\GitHub\\tanmakIO\\Server\\ServerProject.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
