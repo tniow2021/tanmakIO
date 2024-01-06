@@ -23,6 +23,7 @@ public class ClientNetwork
     public Socket client;
     IPEndPoint ServerIP;
     int port;
+    bool IsConnect=false;
 
     public TypeBuff typeBuff { get; private set; }
     public ClientNetwork(IPAddress connectAddress, int _port)
@@ -35,27 +36,35 @@ public class ClientNetwork
         
         //Start
         client.Connect(ServerIP);
-        //MonoBehaviour.print("서버 연결성공");
+        IsConnect = true;
+        //MonoBehaviour.print("연결성공");
     }
     public ClientNetwork(Socket _clinet)
     {
         typeBuff = new TypeBuff(this);
         client = _clinet;
+        IsConnect = true;
     }
 
 
     BinaryHandler binaryHandler = new BinaryHandler(cutTrigger: 4);
     void Send()
     {
-        while (typeBuff.BinaryPull(out byte[] data))
+        while(typeBuff.BinaryPull(out byte[] data))
         {
-            client.Send(binaryHandler.Pack(data));
-        }
+            int a= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
+            if(error == SocketError.SocketError)
+            {
+                client.Close();
+                IsConnect = false;
+            }
+               }
     }
-    public void Update()
+    public bool Update()
     {
         Receive();
         Send();
+        return IsConnect;
     }
     void Receive()
     {

@@ -1,16 +1,20 @@
+using System;
 public enum TypeCode
 {
-    UserTransform = 0,
+    None,
+    UserTransform,
     AliveCherk
 }
 public static class Types
-{    
+{
+    static int numberOfTypeCode = System.Enum.GetValues(typeof(TypeCode)).Length;
     public static byte TypeCodeToByte(TypeCode tp)
     {
         return (byte)tp;
     }
     public static TypeCode ByteToTypeCode(byte b)
     {
+        if (b >= numberOfTypeCode) return TypeCode.None;
         return (TypeCode)b;
     }
 }

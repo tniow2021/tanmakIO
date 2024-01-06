@@ -66,7 +66,7 @@ public class TypeBuff
     }
     public void Push(INetStruct ns)
     {
-        byte[] sendData = packing(ns.Encoding(), ns.GetStructType());//패킹
+        byte[] sendData = packing(ns.Encoding(), ns.GetTypeCode());//패킹
         SendQueues.Enqueue(sendData);
     }
     public bool pull(out INetStruct st, TypeCode typeCode)
