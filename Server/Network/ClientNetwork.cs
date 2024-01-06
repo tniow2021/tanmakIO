@@ -27,9 +27,9 @@ public class ClientNetwork
     bool IsConnect=false;
 
     public TypeBuff typeBuff { get; private set; }
-    public ClientNetwork(IPAddress connectAddress, int _port)
+    public ClientNetwork(IPAddress connectAddress, int _port, TypeBuff _typeBuff)
     {
-        typeBuff = new TypeBuff(this);
+        typeBuff = _typeBuff;
         client =
             new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         ServerIP = new IPEndPoint(connectAddress, _port);
@@ -40,46 +40,84 @@ public class ClientNetwork
         IsConnect = true;
         //MonoBehaviour.print("연결성공");
     }
-    public ClientNetwork(Socket _clinet)
+    public ClientNetwork(Socket _clinet, TypeBuff _typeBuff)
     {
-        typeBuff = new TypeBuff(this);
+        typeBuff = _typeBuff;
         client = _clinet;
         IsConnect = true;
     }
-
-
-    BinaryHandler binaryHandler = new BinaryHandler(cutTrigger: 4);
-    void Send()
+    public bool Update(float deltaTime)
     {
-        while(typeBuff.BinaryPull(out byte[] data))
+        if(IsConnect)
         {
-            int count= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
-            Console.WriteLine(count);
+            Receive();//tcp연결은 얼만큼 데이터가 오갔는지를 세는 것으로 연결을 가늠할 수 있다.
+            Send();
+            ConnectCherk(deltaTime);
+        }
+        
+        //Console.WriteLine("리시브버퍼:" + typeBuff.recieveQueues[0].Count);
+        //Console.WriteLine("센드버퍼:" + typeBuff.SendQueues.Count);
+        return IsConnect;
+    }
+
+    public float timeOutTime = 20;//마지막 TimeOutCherk으로부터 기다릴 수 있는 시간.
+    public float repeadWattingInterval = 10;//TimeOutCherk 전송 대기시간
+    float timeOutTime_count = 0;//타이머
+    float repeadWattingInterval_count = 0;//타이머
+    bool ConnectCherk(float deltaTime)
+    {
+        //일정주기로 연속 전송
+        if (repeadWattingInterval_count < repeadWattingInterval)
+        {
+            repeadWattingInterval_count += deltaTime;
+        }
+        else//시간 초과시
+        {
+            typeBuff.Push(new TimeOutCherk());
+        }
+        //timeOut을 세는 단계
+        timeOutTime_count += deltaTime;
+        Console.WriteLine("tl:" + timeOutTime_count+":"+ deltaTime);
+        while (typeBuff.pull(out INetStruct ns, TypeCode.TimeOutCherk))
+        {
+            timeOutTime_count = 0;
+        }
+        if (timeOutTime_count > timeOutTime)//시간초과시
+        {
+            IsConnect = false;
+            client.Close();
+            return false;
+        }
+        return true;
+    }
+    BinaryHandler binaryHandler = new BinaryHandler(cutTrigger: 4);
+    int Send()
+    {
+        int count=0;
+        while (typeBuff.BinaryPull(out byte[] data))
+        {
+            count+= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
+            //Console.WriteLine(count);
             if (error != SocketError.Success)
             {
                 Console.WriteLine("실패. 소켓종료.");
                 client.Close();
                 IsConnect = false;
             }
-            Console.WriteLine("보낸데이터:" + count);
-            if(count == 0) { IsConnect = false; }
+            //Console.WriteLine("보낸데이터:" + count);
         }
+        return count;
     }
-    public bool Update()
-    {
-        Receive();
-        Send();
-        Console.WriteLine("리시브버퍼:" + typeBuff.recieveQueues[0].Count);
-        Console.WriteLine("센드버퍼:" + typeBuff.SendQueues.Count);
-        return IsConnect;
-    }
+    float timeOutCount = 0;
+
     void Receive()
     {
+        int count = 0;
         while (client.Available>0)
         {
-
+            Console.WriteLine("완");
             byte[] buff = new byte[client.Available];
-            client.Receive(buff, 0,buff.Length, SocketFlags.None,out SocketError error);
+            count+= client.Receive(buff, 0,buff.Length, SocketFlags.None,out SocketError error);
             if (error != SocketError.Success)
             {
                 Console.WriteLine("실패. 소켓종료.");
@@ -89,11 +127,13 @@ public class ClientNetwork
             }
             foreach (byte b in buff)
             {
+                Console.WriteLine(".." + b);
                 if(binaryHandler.UnPack(b,out byte[]binarySplited))//1바이트씩 보내면 슬라이스될 때 true와 함꼐 out.
                 {
                     typeBuff.BinaryPush(binarySplited);//핵심
                 }
             }
         }
+        return;
     }
 }

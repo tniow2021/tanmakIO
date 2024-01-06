@@ -13,17 +13,16 @@ public class InGameNet : MonoBehaviour
     public List<OtherPlayer>otherPlayers=new List<OtherPlayer>();
     private void Start()
     {
-        print("초기데이터 보냄");
-        if (GameManager.GetTypeBuff() is null) print("null1");
-        GameManager.GetTypeBuff().Push(Converting.ToUserTransForm(new Vector3(3, 4, 5)));
+
     }
 
     public void Update()
     {
-        while (GameManager.GetTypeBuff().pull(out INetStruct st,TypeCode.UserTransform))
+        TypeBuff typeBuff = GameManager.GetTypeBuff();
+        while (typeBuff.pull(out INetStruct st,TypeCode.UserTransform))
         {
             UserTransform ut=(UserTransform)st;
-            print(ut.x + ":" + ut.y);
+            //print(ut.x + ":" + ut.y);
             Vector3 v3 = Converting.ToVector3(ut);
 
             foreach(var other in otherPlayers)
@@ -31,12 +30,13 @@ public class InGameNet : MonoBehaviour
                 other.transform.localPosition = v3+new Vector3(2,2);
             }
         }
-        SendToServer(player.transform);
-        
+       
+        //SendToServer(player.transform);
     }
     public void AccessRequest(Player _player)
     {
         player =_player;
+        print("와1");
     }
 
     void SendToServer(Transform t)

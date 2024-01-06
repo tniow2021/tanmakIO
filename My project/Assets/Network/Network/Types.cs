@@ -2,8 +2,12 @@ using System;
 public enum TypeCode
 {
     None,
+    DummyData,
+    TimeOutCherk,
     UserTransform,
-    AliveCherk
+    AliveCherk,
+    AccessRequest,
+    AccessRequestAnswer
 }
 public static class Types
 {
@@ -24,9 +28,9 @@ public interface INetStruct
     public byte[] Encoding();
     public void Decoding(byte[] data);
 }
+
 public struct UserTransform : INetStruct
 {
-    //유저 식별자
     public float x, y;
     public UserTransform(float _x, float _y)
     {
@@ -47,20 +51,56 @@ public struct UserTransform : INetStruct
         y = System.BitConverter.ToSingle(data, 4);
     }
 }
-public struct AliveCherk : INetStruct
+public struct AccessRequest : INetStruct
 {
-    public TypeCode GetTypeCode() { return TypeCode.AliveCherk; }
-    int ID;
-    public AliveCherk(int _ID)
+    public int ID;
+    public AccessRequest(int _ID)
     {
         ID = _ID;
     }
+    public TypeCode GetTypeCode() { return TypeCode.AccessRequest; }
     public byte[] Encoding()
     {
-        return System.BitConverter.GetBytes((Int32)ID);
+        return System.BitConverter.GetBytes(ID);
     }
     public void Decoding(byte[] data)
     {
         ID = System.BitConverter.ToInt32(data, 0);
     }
+}
+public struct AccessRequestAnswer : INetStruct
+{
+    public int YourID;
+    public AccessRequestAnswer(int _YourID)
+    {
+        YourID = _YourID;
+    }
+    public TypeCode GetTypeCode() { return TypeCode.AccessRequestAnswer; }
+    public byte[] Encoding()
+    {
+        return System.BitConverter.GetBytes(YourID);
+    }
+    public void Decoding(byte[] data)
+    {
+        YourID = System.BitConverter.ToInt32(data, 0);
+    }
+
+}
+public struct TimeOutCherk : INetStruct
+{
+    public TypeCode GetTypeCode() { return TypeCode.TimeOutCherk; }
+    public byte[] Encoding()
+    {
+        return new byte[0];
+    }
+    public void Decoding(byte[] data) { }
+}
+public struct DummyData : INetStruct
+{
+    public TypeCode GetTypeCode() { return TypeCode.DummyData; }
+    public byte[] Encoding()
+    {
+        return new byte[0];
+    }
+    public void Decoding(byte[] data) { }
 }

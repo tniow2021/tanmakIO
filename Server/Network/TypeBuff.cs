@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class TypeBuff
 {
     /*
@@ -22,14 +24,12 @@ public class TypeBuff
      */
 
     //enum형식 TypeCode의 요소 수만큼 Queue를 만든다.
-    ClientNetwork network;
     public Queue<INetStruct>[] recieveQueues
         =new Queue<INetStruct>[System.Enum.GetValues(typeof(TypeCode)).Length];
     public Queue<byte[]> SendQueues
         = new Queue<byte[]>();
-    public TypeBuff(ClientNetwork _network)
+    public TypeBuff()
     {
-        network = _network;
         for (int i=0;i< System.Enum.GetValues(typeof(TypeCode)).Length;i++)
         {
             recieveQueues[i] = new Queue<INetStruct>();
@@ -38,7 +38,6 @@ public class TypeBuff
     public void BinaryPush(byte[]data)
     {
         TypeCode typeCode = Unpacking(data);//언패킹
-        
         switch(typeCode)//구조체 분류
         {
             case TypeCode.UserTransform://나중에일반화할것
@@ -46,6 +45,34 @@ public class TypeBuff
                     var u = new UserTransform();
                     u.Decoding(data);
                     recieveQueues[(int)typeCode].Enqueue(u);
+                break;
+            }
+            case TypeCode.AccessRequest:
+            {
+                var u = new AccessRequest();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
+                    break;
+            }
+            case TypeCode.AccessRequestAnswer:
+            {
+                var u = new AccessRequestAnswer();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
+                break;
+            }
+            case TypeCode.TimeOutCherk:
+            {
+                var u = new TimeOutCherk();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
+                break;
+            }
+            case TypeCode.DummyData:
+            {
+                var u = new DummyData();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
                 break;
             }
         }

@@ -25,9 +25,9 @@ public class ClientNetwork
     bool IsConnect=false;
 
     public TypeBuff typeBuff { get; private set; }
-    public ClientNetwork(IPAddress connectAddress, int _port)
+    public ClientNetwork(IPAddress connectAddress, int _port, TypeBuff _typeBuff)
     {
-        typeBuff = new TypeBuff(this);
+        typeBuff = _typeBuff;
         client =
             new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         ServerIP = new IPEndPoint(connectAddress, _port);
@@ -40,32 +40,52 @@ public class ClientNetwork
     }
     public ClientNetwork(Socket _clinet)
     {
-        typeBuff = new TypeBuff(this);
+        typeBuff = new TypeBuff();
         client = _clinet;
         IsConnect = true;
     }
 
 
-    BinaryHandler binaryHandler = new BinaryHandler(cutTrigger: 4);
-    void Send()
+    public bool Update(float deltaTime)
     {
-        while(typeBuff.BinaryPull(out byte[] data))
+        if(IsConnect)
         {
-            int a= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
-            if(error == SocketError.SocketError)
-            {
-                client.Close();
-                IsConnect = false;
-            }
+            Receive();
+            Send();
+            ConnectCherk(deltaTime);
         }
-    }
-    public bool Update()
-    {
-        Receive();
-        Send();
-
         
         return IsConnect;
+    }
+
+    public float timeOutTime = 20f;//마지막 TimeOutCherk으로부터 기다릴 수 있는 시간.
+    public float repeadWattingInterval = 10f;//TimeOutCherk 전송 대기시간
+    float timeOutTime_count = 0;//타이머
+    float repeadWattingInterval_count = 0;//타이머
+    bool ConnectCherk(float deltaTime)
+    {
+        //일정주기로 연속 전송
+        if(repeadWattingInterval_count< repeadWattingInterval)
+        {
+            repeadWattingInterval_count += deltaTime;
+        }
+        else//시간 초과시
+        {
+            typeBuff.Push(new TimeOutCherk());
+        }
+        //timeOut을 세는 단계
+        timeOutTime_count += deltaTime;
+        while (typeBuff.pull(out INetStruct ns,TypeCode.TimeOutCherk))
+        {
+            timeOutTime_count = 0;
+        }
+        if(timeOutTime_count > timeOutTime)//시간초과시
+        {
+            IsConnect = false;
+            client.Close();
+            return false;
+        }
+        return true;
     }
     void Receive()
     {
@@ -79,6 +99,19 @@ public class ClientNetwork
                 {
                     typeBuff.BinaryPush(binarySplited);//핵심
                 }
+            }
+        }
+    }
+    BinaryHandler binaryHandler = new BinaryHandler(cutTrigger: 4);
+    void Send()
+    {
+        while(typeBuff.BinaryPull(out byte[] data))
+        {
+            int a= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
+            if(error != SocketError.Success)
+            {
+                client.Close();
+                IsConnect = false;
             }
         }
     }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 public class TypeBuff
 {
     /*
@@ -23,37 +24,62 @@ public class TypeBuff
      */
 
     //enum형식 TypeCode의 요소 수만큼 Queue를 만든다.
-    ClientNetwork network;
     public Queue<INetStruct>[] recieveQueues
-        =new Queue<INetStruct>[System.Enum.GetValues(typeof(TypeCode)).Length];
+        = new Queue<INetStruct>[System.Enum.GetValues(typeof(TypeCode)).Length];
     public Queue<byte[]> SendQueues
         = new Queue<byte[]>();
-    public TypeBuff(ClientNetwork _network)
+    public TypeBuff()
     {
-        network = _network;
-        for (int i=0;i< System.Enum.GetValues(typeof(TypeCode)).Length;i++)
+        for (int i = 0; i < System.Enum.GetValues(typeof(TypeCode)).Length; i++)
         {
             recieveQueues[i] = new Queue<INetStruct>();
         }
     }
-    public void BinaryPush(byte[]data)
+    public void BinaryPush(byte[] data)
     {
         TypeCode typeCode = Unpacking(data);//언패킹
-        
-        switch(typeCode)//구조체 분류
+        switch (typeCode)//구조체 분류
         {
             case TypeCode.UserTransform://나중에일반화할것
-            {
+                {
                     var u = new UserTransform();
                     u.Decoding(data);
                     recieveQueues[(int)typeCode].Enqueue(u);
-                break;
-            }
+                    break;
+                }
+            case TypeCode.AccessRequest:
+                {
+                    var u = new AccessRequest();
+                    u.Decoding(data);
+                    recieveQueues[(int)typeCode].Enqueue(u);
+                    break;
+                }
+            case TypeCode.AccessRequestAnswer:
+                {
+                    var u = new AccessRequestAnswer();
+                    u.Decoding(data);
+                    recieveQueues[(int)typeCode].Enqueue(u);
+                    break;
+                }
+            case TypeCode.TimeOutCherk:
+                {
+                    var u = new TimeOutCherk();
+                    u.Decoding(data);
+                    recieveQueues[(int)typeCode].Enqueue(u);
+                    break;
+                }
+            case TypeCode.DummyData:
+                {
+                    var u = new DummyData();
+                    u.Decoding(data);
+                    recieveQueues[(int)typeCode].Enqueue(u);
+                    break;
+                }
         }
     }
-    public bool BinaryPull(out byte[]sendData)
+    public bool BinaryPull(out byte[] sendData)
     {
-        if(SendQueues.Count>0)
+        if (SendQueues.Count > 0)
         {
             sendData = SendQueues.Dequeue();
             return true;
@@ -71,9 +97,9 @@ public class TypeBuff
     }
     public bool pull(out INetStruct st, TypeCode typeCode)
     {
-        if(recieveQueues[(int)typeCode].Count>0)
+        if (recieveQueues[(int)typeCode].Count > 0)
         {
-            st= recieveQueues[(int)typeCode].Dequeue();
+            st = recieveQueues[(int)typeCode].Dequeue();
             return true;
         }
         else
@@ -82,18 +108,18 @@ public class TypeBuff
             return false;
         }
     }
-    public byte[] packing(byte[]data,TypeCode tc)
+    public byte[] packing(byte[] data, TypeCode tc)
     {
-        byte[]box= new byte[data.Length+1];
-        for(int i=0;i<data.Length;i++)
+        byte[] box = new byte[data.Length + 1];
+        for (int i = 0; i < data.Length; i++)
         {
-            box[i]= data[i];
+            box[i] = data[i];
         }
-        box[box.Length-1]=Types.TypeCodeToByte(tc);
+        box[box.Length - 1] = Types.TypeCodeToByte(tc);
         return box;
     }
-    TypeCode Unpacking(byte[]data)
+    TypeCode Unpacking(byte[] data)
     {
-        return Types.ByteToTypeCode(data[data.Length-1]);//마지막 인덱스.
+        return Types.ByteToTypeCode(data[data.Length - 1]);//마지막 인덱스.
     }
 }
