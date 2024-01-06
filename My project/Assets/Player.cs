@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     {
         //최상위 오브젝트에 달려있는 InGameNet을 찾아 등록
         transform.root.GetComponent<InGameNet>().AccessRequest(this);
+        print("player");
     }
     void Update()
     {

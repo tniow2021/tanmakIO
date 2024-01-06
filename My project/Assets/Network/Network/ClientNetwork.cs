@@ -47,7 +47,7 @@ public class ClientNetwork
     BinaryHandler binaryHandler = new BinaryHandler(cutTrigger: 4);
     void Send()
     {
-        if(typeBuff.BinaryPull(out byte[] data))
+        while (typeBuff.BinaryPull(out byte[] data))
         {
             client.Send(binaryHandler.Pack(data));
         }
@@ -59,11 +59,11 @@ public class ClientNetwork
     }
     void Receive()
     {
-        if (client.Available>0)
+        while (client.Available>0)
         {
 
             byte[] buff = new byte[client.Available];
-            client.Receive(buff, client.Available,SocketFlags.None);
+            client.Receive(buff, buff.Length, SocketFlags.None);
             foreach(byte b in buff)
             {
                 if(binaryHandler.UnPack(b,out byte[]binarySplited))//1바이트씩 보내면 슬라이스될 때 true와 함꼐 out.

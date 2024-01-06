@@ -9,32 +9,36 @@ public class InGameNet : MonoBehaviour
      * 
      * player는 AccessRequest로 자기를 players에 등록한다.
      */
-    Player players;
+    Player player;
     public List<OtherPlayer>otherPlayers=new List<OtherPlayer>();
     private void Start()
     {
         print("초기데이터 보냄");
+        if (GameManager.GetTypeBuff() is null) print("null1");
         GameManager.GetTypeBuff().Push(Converting.ToUserTransForm(new Vector3(3, 4, 5)));
     }
 
     public void Update()
     {
-        if (GameManager.GetTypeBuff().pull(out INetStruct st,TypeCode.UserTransform))
+        while (GameManager.GetTypeBuff().pull(out INetStruct st,TypeCode.UserTransform))
         {
             UserTransform ut=(UserTransform)st;
             print(ut.x + ":" + ut.y);
             Vector3 v3 = Converting.ToVector3(ut);
-            otherPlayer.transform.localPosition = v3+new Vector3(2,2);
+
+            foreach(var other in otherPlayers)
+            {
+                other.transform.localPosition = v3+new Vector3(2,2);
+            }
+            
             print("받은데이터:"+v3);
         }
-        foreach (var player in players)
-        {
-            SendToServer(player.transform);
-        }
+        SendToServer(player.transform);
+        
     }
-    public void AccessRequest(Player player)
+    public void AccessRequest(Player _player)
     {
-        players.Add(player);
+        player =_player;
     }
 
     void SendToServer(Transform t)

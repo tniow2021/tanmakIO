@@ -32,14 +32,20 @@ class Server
         {
             ClientNetwork network = clientNetworks[i];
             //나중에연결해제 처리
-            network.Update();
-            if(network.typeBuff.pull(out INetStruct ns,TypeCode.UserTransform))
+            bool IsConnect= network.Update();
+            if (IsConnect is false)
+            {
+                Console.WriteLine("시발");
+                clientNetworks.Remove(network);
+            }
+            if (network.typeBuff.pull(out INetStruct ns,TypeCode.UserTransform))
             {
                 SendToAllClinet(ns);
                 UserTransform u = (UserTransform)ns;
                 Console.WriteLine(u.x+":"+u.y);
             }
         }
+        //Console.WriteLine(clientNetworks.Count);
         return clientNetworks.Count;
     }
     void SendToAllClinet(INetStruct ns)

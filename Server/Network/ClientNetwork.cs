@@ -23,6 +23,7 @@ public class ClientNetwork
     public Socket client;
     IPEndPoint ServerIP;
     int port;
+    bool IsConnect=false;
 
     public TypeBuff typeBuff { get; private set; }
     public ClientNetwork(IPAddress connectAddress, int _port)
@@ -35,35 +36,48 @@ public class ClientNetwork
         
         //Start
         client.Connect(ServerIP);
-        //MonoBehaviour.print("서버 연결성공");
+        IsConnect = true;
+        //MonoBehaviour.print("연결성공");
     }
     public ClientNetwork(Socket _clinet)
     {
         typeBuff = new TypeBuff(this);
         client = _clinet;
+        IsConnect = true;
     }
 
 
     BinaryHandler binaryHandler = new BinaryHandler(cutTrigger: 4);
     void Send()
     {
-        if(typeBuff.BinaryPull(out byte[] data))
+        while(typeBuff.BinaryPull(out byte[] data))
         {
-            client.Send(binaryHandler.Pack(data));
+            int a= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
+            Console.WriteLine(a);
+            if(error == SocketError.SocketError)
+            {
+                Console.WriteLine("실패. 소켓종료.");
+                client.Close();
+                IsConnect = false;
+            }
+            Console.WriteLine("보낸데이터:" + a);
         }
     }
-    public void Update()
+    public bool Update()
     {
         Receive();
         Send();
+        Console.WriteLine("리시브버퍼:" + typeBuff.recieveQueues[0].Count);
+        Console.WriteLine("센드버퍼:" + typeBuff.SendQueues.Count);
+        return IsConnect;
     }
     void Receive()
     {
-        if (client.Available>0)
+        while (client.Available>0)
         {
 
             byte[] buff = new byte[client.Available];
-            client.Receive(buff, client.Available,SocketFlags.None);
+            client.Receive(buff, buff.Length, SocketFlags.None);
             foreach(byte b in buff)
             {
                 if(binaryHandler.UnPack(b,out byte[]binarySplited))//1바이트씩 보내면 슬라이스될 때 true와 함꼐 out.
