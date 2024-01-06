@@ -30,6 +30,6 @@ public class GameManager
             MonoBehaviour.print("ID등록받음");
         }
         //MonoBehaviour.print("리:"+GetTypeBuff().recieveQueues[(Int32)TypeCode.UserTransform].Count+"센:"+ GetTypeBuff().SendQueues.Count);
-        network.Update(Time.deltaTime);
+        network.Update();
     }
 }

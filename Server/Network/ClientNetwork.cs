@@ -1,6 +1,7 @@
 using System.Net.Sockets;
 using System.Net;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Data;
 
 public class ClientNetwork
 {
@@ -46,57 +47,31 @@ public class ClientNetwork
         client = _clinet;
         IsConnect = true;
     }
-    public bool Update(float deltaTime)
+    int waittingCount = 0;//1000까지 세면 더미를 하나씩 보내어 상태를 체크한다.
+    public bool Update()
     {
-        if(IsConnect)
+        if(IsConnect&&client.Connected)
         {
             Receive();//tcp연결은 얼만큼 데이터가 오갔는지를 세는 것으로 연결을 가늠할 수 있다.
             Send();
-            ConnectCherk(deltaTime);
         }
-        
         //Console.WriteLine("리시브버퍼:" + typeBuff.recieveQueues[0].Count);
         //Console.WriteLine("센드버퍼:" + typeBuff.SendQueues.Count);
+        waittingCount++;
+        if(waittingCount >=1000)
+        {
+            waittingCount = 0;
+            typeBuff.Push(new DummyData());
+        }
         return IsConnect;
     }
-
-    public float timeOutTime = 20;//마지막 TimeOutCherk으로부터 기다릴 수 있는 시간.
-    public float repeadWattingInterval = 10;//TimeOutCherk 전송 대기시간
-    float timeOutTime_count = 0;//타이머
-    float repeadWattingInterval_count = 0;//타이머
-    bool ConnectCherk(float deltaTime)
-    {
-        //일정주기로 연속 전송
-        if (repeadWattingInterval_count < repeadWattingInterval)
-        {
-            repeadWattingInterval_count += deltaTime;
-        }
-        else//시간 초과시
-        {
-            typeBuff.Push(new TimeOutCherk());
-        }
-        //timeOut을 세는 단계
-        timeOutTime_count += deltaTime;
-        Console.WriteLine("tl:" + timeOutTime_count+":"+ deltaTime);
-        while (typeBuff.pull(out INetStruct ns, TypeCode.TimeOutCherk))
-        {
-            timeOutTime_count = 0;
-        }
-        if (timeOutTime_count > timeOutTime)//시간초과시
-        {
-            IsConnect = false;
-            client.Close();
-            return false;
-        }
-        return true;
-    }
     BinaryHandler binaryHandler = new BinaryHandler(cutTrigger: 4);
-    int Send()
+    void Send()
     {
         int count=0;
         while (typeBuff.BinaryPull(out byte[] data))
         {
-            count+= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
+            count= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
             //Console.WriteLine(count);
             if (error != SocketError.Success)
             {
@@ -104,9 +79,13 @@ public class ClientNetwork
                 client.Close();
                 IsConnect = false;
             }
-            //Console.WriteLine("보낸데이터:" + count);
+            if(count==0)
+            {
+                IsConnect= false;
+                client.Close();
+            }
+            Console.WriteLine("보낸데이터:" + count);
         }
-        return count;
     }
     float timeOutCount = 0;
 

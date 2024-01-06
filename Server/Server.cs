@@ -13,7 +13,6 @@ class Server
     SocketAsyncEventArgs AcceptArgs = new SocketAsyncEventArgs();
     UserManager userManager = new UserManager();
 
-    System.Timers.Timer timer = new System.Timers.Timer();
     public Server(int _port, int _maxUser)
     {
         maxUser = _maxUser;
@@ -26,27 +25,17 @@ class Server
     {
         AcceptArgs.Completed += new EventHandler<SocketAsyncEventArgs>(Accept_completed);
         AcceptArgs.SetBuffer(new byte[1024], 0, 1024);
-        timer.Interval = 1000;
-        timer.Elapsed += TimerEvent;
-    }
-    int deltaTime = 0;
-    void TimerEvent(Object source, System.Timers.ElapsedEventArgs e)
-    {
-        deltaTime = 1;
     }
     void Start()
     {
         AcceptStart();
-        timer.Start();
     }
     public int Update()
     {
-        Console.WriteLine("시간:" + deltaTime);
         for (int i = 0; i < clientNetworks.Count;i++)
         {
             ClientNetwork network = clientNetworks[i];
-            //나중에연결해제 처리를 받으면
-            bool IsConnect = network.Update(deltaTime: deltaTime);
+            bool IsConnect = network.Update();
             if (IsConnect is false)
             {
                 Console.WriteLine("시발");
@@ -75,7 +64,6 @@ class Server
 
         }
         Console.WriteLine(clientNetworks.Count);
-        deltaTime = 0;
         return clientNetworks.Count;
     }
     void SendToAllClinet(INetStruct ns)

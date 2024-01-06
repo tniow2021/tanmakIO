@@ -46,46 +46,15 @@ public class ClientNetwork
     }
 
 
-    public bool Update(float deltaTime)
+    public bool Update()
     {
         if(IsConnect)
         {
             Receive();
             Send();
-            ConnectCherk(deltaTime);
         }
         
         return IsConnect;
-    }
-
-    public float timeOutTime = 20f;//마지막 TimeOutCherk으로부터 기다릴 수 있는 시간.
-    public float repeadWattingInterval = 10f;//TimeOutCherk 전송 대기시간
-    float timeOutTime_count = 0;//타이머
-    float repeadWattingInterval_count = 0;//타이머
-    bool ConnectCherk(float deltaTime)
-    {
-        //일정주기로 연속 전송
-        if(repeadWattingInterval_count< repeadWattingInterval)
-        {
-            repeadWattingInterval_count += deltaTime;
-        }
-        else//시간 초과시
-        {
-            typeBuff.Push(new TimeOutCherk());
-        }
-        //timeOut을 세는 단계
-        timeOutTime_count += deltaTime;
-        while (typeBuff.pull(out INetStruct ns,TypeCode.TimeOutCherk))
-        {
-            timeOutTime_count = 0;
-        }
-        if(timeOutTime_count > timeOutTime)//시간초과시
-        {
-            IsConnect = false;
-            client.Close();
-            return false;
-        }
-        return true;
     }
     void Receive()
     {
