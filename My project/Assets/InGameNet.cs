@@ -30,8 +30,6 @@ public class InGameNet : MonoBehaviour
             {
                 other.transform.localPosition = v3+new Vector3(2,2);
             }
-            
-            print("받은데이터:"+v3);
         }
         SendToServer(player.transform);
         

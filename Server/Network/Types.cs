@@ -3,7 +3,8 @@ public enum TypeCode
 {
     None,
     UserTransform,
-    AliveCherk
+    AliveCherk,
+    AccessRequest
 }
 public static class Types
 {

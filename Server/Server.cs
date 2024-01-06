@@ -38,14 +38,15 @@ class Server
                 Console.WriteLine("시발");
                 clientNetworks.Remove(network);
             }
-            if (network.typeBuff.pull(out INetStruct ns,TypeCode.UserTransform))
+            while (network.typeBuff.pull(out INetStruct ns,TypeCode.UserTransform))
             {
+                Console.WriteLine(" 클라이언트번호:" + i);
                 SendToAllClinet(ns);
                 UserTransform u = (UserTransform)ns;
-                Console.WriteLine(u.x+":"+u.y);
+                //Console.WriteLine(u.x+":"+u.y);
             }
         }
-        //Console.WriteLine(clientNetworks.Count);
+        Console.WriteLine(clientNetworks.Count);
         return clientNetworks.Count;
     }
     void SendToAllClinet(INetStruct ns)

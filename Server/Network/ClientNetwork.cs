@@ -1,5 +1,6 @@
 using System.Net.Sockets;
 using System.Net;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class ClientNetwork
 {
@@ -52,15 +53,16 @@ public class ClientNetwork
     {
         while(typeBuff.BinaryPull(out byte[] data))
         {
-            int a= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
-            Console.WriteLine(a);
-            if(error == SocketError.SocketError)
+            int count= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
+            Console.WriteLine(count);
+            if (error != SocketError.Success)
             {
                 Console.WriteLine("실패. 소켓종료.");
                 client.Close();
                 IsConnect = false;
             }
-            Console.WriteLine("보낸데이터:" + a);
+            Console.WriteLine("보낸데이터:" + count);
+            if(count == 0) { IsConnect = false; }
         }
     }
     public bool Update()
@@ -77,8 +79,15 @@ public class ClientNetwork
         {
 
             byte[] buff = new byte[client.Available];
-            client.Receive(buff, buff.Length, SocketFlags.None);
-            foreach(byte b in buff)
+            client.Receive(buff, 0,buff.Length, SocketFlags.None,out SocketError error);
+            if (error != SocketError.Success)
+            {
+                Console.WriteLine("실패. 소켓종료.");
+                client.Close();
+                IsConnect = false;
+                return;
+            }
+            foreach (byte b in buff)
             {
                 if(binaryHandler.UnPack(b,out byte[]binarySplited))//1바이트씩 보내면 슬라이스될 때 true와 함꼐 out.
                 {

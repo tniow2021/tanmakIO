@@ -1,5 +1,6 @@
 using System.Net;
-
+using System;
+using UnityEngine;
 public class GameManager
 {
     /*
@@ -19,6 +20,7 @@ public class GameManager
     }
     public void Update()
     {
+        //MonoBehaviour.print("¸®:"+GetTypeBuff().recieveQueues[(Int32)TypeCode.UserTransform].Count+"¼¾:"+ GetTypeBuff().SendQueues.Count);
         network.Update();
     }
 }

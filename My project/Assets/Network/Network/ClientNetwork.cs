@@ -1,6 +1,5 @@
 using System.Net.Sockets;
 using System.Net;
-
 public class ClientNetwork
 {
     /*
@@ -58,19 +57,20 @@ public class ClientNetwork
                 client.Close();
                 IsConnect = false;
             }
-               }
+        }
     }
     public bool Update()
     {
         Receive();
         Send();
+
+        
         return IsConnect;
     }
     void Receive()
     {
         while (client.Available>0)
         {
-
             byte[] buff = new byte[client.Available];
             client.Receive(buff, buff.Length, SocketFlags.None);
             foreach(byte b in buff)
