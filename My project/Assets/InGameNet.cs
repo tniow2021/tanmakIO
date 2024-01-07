@@ -9,11 +9,35 @@ public class InGameNet : MonoBehaviour
      * 
      * player는 AccessRequest로 자기를 players에 등록한다.
      */
+    public OtherPlayer originalOther;
     Player player;
-    public List<OtherPlayer>otherPlayers=new List<OtherPlayer>();
-    private void Start()
+    Dictionary<int, OtherPlayer> others = new Dictionary<int, OtherPlayer>();
+    void TransformToOthers(UserTransform u)
     {
-
+        if (u.ID == GameManager.Instance.ID) return;
+        if(others.ContainsKey(u.ID))//이미 맵에 유저가 있으면
+        {
+            others[u.ID].transform.localPosition = Converting.ToVector3(u);
+        }
+        else//없으면
+        {
+            print("들어온 유저 아이디:" + u.ID);
+            OtherPlayer clone = Instantiate(originalOther, player.transform.root);
+            others.Add(u.ID,clone);
+            others[u.ID].transform.localPosition = Converting.ToVector3(u);
+        }
+    }
+    void RemoveUserFormMap(int ID)
+    {
+        if (others.ContainsKey(ID))//이미 맵에 유저가 있으면
+        {
+            print("나간유저아이디:" + ID);
+            Destroy(others[ID].gameObject);
+        }
+        else
+        {
+            print("error:RemoveUserFormMap");
+        }
     }
 
     public void Update()
@@ -22,16 +46,14 @@ public class InGameNet : MonoBehaviour
         while (typeBuff.pull(out INetStruct st,TypeCode.UserTransform))
         {
             UserTransform ut=(UserTransform)st;
-            //print(ut.x + ":" + ut.y);
-            Vector3 v3 = Converting.ToVector3(ut);
-
-            foreach(var other in otherPlayers)
-            {
-                other.transform.localPosition = v3+new Vector3(2,2);
-            }
+            TransformToOthers(ut);
         }
-       
-        //SendToServer(player.transform);
+        while (typeBuff.pull(out INetStruct st, TypeCode.ExitUserSignal))
+        {
+            ExitUserSignal es = (ExitUserSignal)st;
+            RemoveUserFormMap(es.exitUserID);
+        }
+        SendMyDataToServer(player.transform);
     }
     public void AccessRequest(Player _player)
     {
@@ -39,8 +61,10 @@ public class InGameNet : MonoBehaviour
         print("와1");
     }
 
-    void SendToServer(Transform t)
+    void SendMyDataToServer(Transform t)
     {
-        GameManager.GetTypeBuff().Push(Converting.ToUserTransForm(t.localPosition));
+        var u = Converting.ToUserTransForm(t.localPosition);
+        u.ID = GameManager.Instance.ID;
+        GameManager.GetTypeBuff().Push(u);
     }
 }

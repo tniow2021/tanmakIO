@@ -7,7 +7,8 @@ public enum TypeCode
     UserTransform,
     AliveCherk,
     AccessRequest,
-    AccessRequestAnswer
+    AccessRequestAnswer,
+    ExitUserSignal
 }
 public static class Types
 {
@@ -31,24 +32,28 @@ public interface INetStruct
 
 public struct UserTransform : INetStruct
 {
+    public int ID;
     public float x, y;
-    public UserTransform(float _x, float _y)
+    public UserTransform(float _x, float _y, int _ID)
     {
+        ID = _ID;
         x = _x;
         y = _y;
     }
     public TypeCode GetTypeCode() { return TypeCode.UserTransform; }
     public byte[] Encoding()
     {
-        byte[] data = new byte[4 * 2];
+        byte[] data = new byte[4 * 3];
         System.BitConverter.GetBytes(x).CopyTo(data, 0);
         System.BitConverter.GetBytes(y).CopyTo(data, 4);
+        System.BitConverter.GetBytes(ID).CopyTo(data, 8);
         return data;
     }
     public void Decoding(byte[] data)
     {
         x = System.BitConverter.ToSingle(data, 0);
         y = System.BitConverter.ToSingle(data, 4);
+        ID = System.BitConverter.ToInt32(data, 8);
     }
 }
 public struct AccessRequest : INetStruct
@@ -82,9 +87,26 @@ public struct AccessRequestAnswer : INetStruct
     }
     public void Decoding(byte[] data)
     {
-        YourID= System.BitConverter.ToInt32(data, 0);
+        YourID = System.BitConverter.ToInt32(data, 0);
     }
 
+}
+public struct ExitUserSignal : INetStruct
+{
+    public int exitUserID;
+    public ExitUserSignal(int _exitUserID)
+    {
+        exitUserID = _exitUserID;
+    }
+    public TypeCode GetTypeCode() { return TypeCode.ExitUserSignal; }
+    public byte[] Encoding()
+    {
+        return System.BitConverter.GetBytes(exitUserID);
+    }
+    public void Decoding(byte[] data)
+    {
+        exitUserID = System.BitConverter.ToInt32(data, 0);
+    }
 }
 public struct TimeOutCherk : INetStruct
 {

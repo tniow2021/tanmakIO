@@ -68,6 +68,13 @@ public class TypeBuff
                 recieveQueues[(int)typeCode].Enqueue(u);
                 break;
             }
+            case TypeCode.ExitUserSignal:
+            {
+                var u = new ExitUserSignal();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
+                break;
+            }
             case TypeCode.DummyData:
             {
                 var u = new DummyData();

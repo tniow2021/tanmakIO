@@ -41,40 +41,47 @@ public class TypeBuff
         switch (typeCode)//구조체 분류
         {
             case TypeCode.UserTransform://나중에일반화할것
-                {
-                    var u = new UserTransform();
-                    u.Decoding(data);
-                    recieveQueues[(int)typeCode].Enqueue(u);
-                    break;
-                }
+            {
+                var u = new UserTransform();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
+                break;
+            }
             case TypeCode.AccessRequest:
-                {
-                    var u = new AccessRequest();
-                    u.Decoding(data);
-                    recieveQueues[(int)typeCode].Enqueue(u);
-                    break;
-                }
+            {
+                var u = new AccessRequest();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
+                break;
+            }
             case TypeCode.AccessRequestAnswer:
-                {
-                    var u = new AccessRequestAnswer();
-                    u.Decoding(data);
-                    recieveQueues[(int)typeCode].Enqueue(u);
-                    break;
-                }
+            {
+                var u = new AccessRequestAnswer();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
+                break;
+            }
             case TypeCode.TimeOutCherk:
-                {
-                    var u = new TimeOutCherk();
-                    u.Decoding(data);
-                    recieveQueues[(int)typeCode].Enqueue(u);
-                    break;
-                }
+            {
+                var u = new TimeOutCherk();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
+                break;
+            }
+            case TypeCode.ExitUserSignal:
+            {
+                var u = new ExitUserSignal();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
+                break;
+            }
             case TypeCode.DummyData:
-                {
-                    var u = new DummyData();
-                    u.Decoding(data);
-                    recieveQueues[(int)typeCode].Enqueue(u);
-                    break;
-                }
+            {
+                var u = new DummyData();
+                u.Decoding(data);
+                recieveQueues[(int)typeCode].Enqueue(u);
+                break;
+            }
         }
     }
     public bool BinaryPull(out byte[] sendData)

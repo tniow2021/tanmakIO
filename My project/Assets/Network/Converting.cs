@@ -3,11 +3,11 @@ public static class Converting
 {
     public static UserTransform ToUserTransForm(Transform t)
     {
-        return new UserTransform(t.position.x,t.position.y);
+        return new UserTransform(t.position.x,t.position.y,0);
     }
     public static UserTransform ToUserTransForm(Vector3 v3)
     {
-        return new UserTransform(v3.x, v3.y);
+        return new UserTransform(v3.x, v3.y,0);
     }
     public static Vector3 ToVector3(UserTransform ut)
     {

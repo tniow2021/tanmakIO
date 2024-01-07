@@ -84,17 +84,15 @@ public class ClientNetwork
                 IsConnect= false;
                 client.Close();
             }
-            Console.WriteLine("보낸데이터:" + count);
+            //Console.WriteLine("보낸데이터:" + count);
         }
     }
-    float timeOutCount = 0;
 
     void Receive()
     {
         int count = 0;
         while (client.Available>0)
         {
-            Console.WriteLine("완");
             byte[] buff = new byte[client.Available];
             count+= client.Receive(buff, 0,buff.Length, SocketFlags.None,out SocketError error);
             if (error != SocketError.Success)
@@ -106,7 +104,6 @@ public class ClientNetwork
             }
             foreach (byte b in buff)
             {
-                Console.WriteLine(".." + b);
                 if(binaryHandler.UnPack(b,out byte[]binarySplited))//1바이트씩 보내면 슬라이스될 때 true와 함꼐 out.
                 {
                     typeBuff.BinaryPush(binarySplited);//핵심

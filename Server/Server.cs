@@ -38,8 +38,14 @@ class Server
             bool IsConnect = network.Update();
             if (IsConnect is false)
             {
-                Console.WriteLine("시발");
+                if(userManager.GetUser(network,out User user))
+                {
+                    Console.WriteLine("ID:"+ user.ID+ "유저의 연결이 끊어짐");
+                    network.typeBuff.Push(new ExitUserSignal(user.ID));
+                    userManager.RemoveUser(user);
+                }
                 clientNetworks.Remove(network);
+                Console.WriteLine("현재총:"+clientNetworks.Count+"명");
                 continue;
             }
             //AccessRequest를 받으면
@@ -49,12 +55,14 @@ class Server
                 Console.WriteLine("사용자가 AccessRequest를 보내옴");
                 int id= userManager.CreateUser(network);
                 network.typeBuff.Push(new AccessRequestAnswer(id));
+                Console.WriteLine("아이디:" + id + "부여.");
             }
             //UserTransform를 받으면
             while (network.typeBuff.pull(out INetStruct ns, TypeCode.UserTransform))
             {
+                var u=(UserTransform)ns;
+                //Console.WriteLine("iii" + u.ID);
                 SendToAllClinet(ns);
-                UserTransform u = (UserTransform)ns;
             }
             //DummyData
             while (network.typeBuff.pull(out INetStruct ns, TypeCode.DummyData))
@@ -63,7 +71,7 @@ class Server
             }
 
         }
-        Console.WriteLine(clientNetworks.Count);
+        //Console.WriteLine(clientNetworks.Count);
         return clientNetworks.Count;
     }
     void SendToAllClinet(INetStruct ns)
