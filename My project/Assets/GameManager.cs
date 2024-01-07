@@ -27,9 +27,8 @@ public class GameManager
         {
             var aa = (AccessRequestAnswer)st;
             ID= aa.YourID;
-            MonoBehaviour.print("ID등록받음");
+            MonoBehaviour.print("ID등록받음:"+ ID);
         }
-        //MonoBehaviour.print("리:"+GetTypeBuff().recieveQueues[(Int32)TypeCode.UserTransform].Count+"센:"+ GetTypeBuff().SendQueues.Count);
         network.Update();
     }
 }

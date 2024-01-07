@@ -83,7 +83,7 @@ public class TypeBuff
                 break;
             }
         }
-    }
+    }//구조체로 디코딩해 종류별로 recieveQueues에 적재
     public bool BinaryPull(out byte[]sendData)
     {
         if(SendQueues.Count>0)
@@ -96,12 +96,12 @@ public class TypeBuff
             sendData = null;
             return false;
         }
-    }
+    }//SendQueues에 쌓인 바이트열을 반환
     public void Push(INetStruct ns)
     {
         byte[] sendData = packing(ns.Encoding(), ns.GetTypeCode());//패킹
         SendQueues.Enqueue(sendData);
-    }
+    }//구조체를 바이트열로 인코딩해 SendQueues에 적재
     public bool pull(out INetStruct st, TypeCode typeCode)
     {
         if(recieveQueues[(int)typeCode].Count>0)
@@ -114,8 +114,9 @@ public class TypeBuff
             st = null;
             return false;
         }
-    }
-    public byte[] packing(byte[]data,TypeCode tc)
+    }//recieveQueues에 쌓인 구조체를 반환
+    //2차 데이터 형식:"데이터+구조체구분코드"
+    byte[] packing(byte[]data,TypeCode tc)
     {
         byte[]box= new byte[data.Length+1];
         for(int i=0;i<data.Length;i++)
@@ -124,9 +125,9 @@ public class TypeBuff
         }
         box[box.Length-1]=Types.TypeCodeToByte(tc);
         return box;
-    }
+    }//받은 바이트열을 데이터 형식대로 감싼다.
     TypeCode Unpacking(byte[]data)
     {
         return Types.ByteToTypeCode(data[data.Length-1]);//마지막 인덱스.
-    }
+    }//받은 바이트열을 뜯고 구조체구분코드를 반환.
 }

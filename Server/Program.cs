@@ -13,15 +13,6 @@ static class Program
 
         myServer();
     }
-    static void myEchoServer()
-    {
-        EchoServer echoServer = new EchoServer(2024, 1000);
-        while(true)
-        {
-            Thread.Sleep(10);
-            echoServer.Update();
-        }
-    }
     static void myServer()
     {
         Console.WriteLine("프로그램 시작");

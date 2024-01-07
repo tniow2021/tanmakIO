@@ -1,7 +1,5 @@
 ﻿using System.Net.Sockets;
 using System.Net;
-using System.Timers;
-using System.Diagnostics;
 
 class Server
 {
@@ -12,7 +10,7 @@ class Server
 
     SocketAsyncEventArgs AcceptArgs = new SocketAsyncEventArgs();
     UserManager userManager = new UserManager();
-
+    //서버소켓을 엽니다
     public Server(int _port, int _maxUser)
     {
         maxUser = _maxUser;
@@ -21,15 +19,18 @@ class Server
         Init();
         Start();
     }
+    //필요한 설정을 초기화합니다
     void Init()
     {
         AcceptArgs.Completed += new EventHandler<SocketAsyncEventArgs>(Accept_completed);
         AcceptArgs.SetBuffer(new byte[1024], 0, 1024);
     }
+    //Start()는 AcceptStart()를 실행할 뿐입니다..
     void Start()
     {
         AcceptStart();
     }
+    //network속에 typebuff에서 데이터를 가져와 가장 중요한 게임로직을 처리합니다
     public int Update()
     {
         for (int i = 0; i < clientNetworks.Count;i++)
@@ -74,6 +75,7 @@ class Server
         //Console.WriteLine(clientNetworks.Count);
         return clientNetworks.Count;
     }
+    //모두에게 특정 정보를 송신하고 싶을때 사용합니다
     void SendToAllClinet(INetStruct ns)
     {
         for (int i = 0; i < clientNetworks.Count; i++)
@@ -82,7 +84,8 @@ class Server
             network.typeBuff.Push(ns);
         }
     }
-    void AcceptStart()//비동기로 재귀
+    //아래 두함수는 비동기적으로 서로를 호출하며 소켓접속을 받습니다
+    void AcceptStart()
     {
         Console.WriteLine("연결받는중...현재{0}명", clientNetworks.Count);
         AcceptArgs.AcceptSocket = null;

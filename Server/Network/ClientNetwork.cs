@@ -1,32 +1,11 @@
 using System.Net.Sockets;
 using System.Net;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Data;
-
 public class ClientNetwork
 {
-    /*
-     * 데이터 송신:
-     * 1.아무 스크립트가 데이터를 Converting.To~~()함수를 통해 INetStruct형식의 구조체로 만든다.
-     * 2.INetStruct 형식의 구조체를 Network.Send()함수에 보낸다
-     * 3. Network.Send 함수는 구조체를 인코딩한 뒤 binaryHandler로 패킹한다.
-     * 4. binaryHandler가 일정한 형식대로 패킹한 바이트열을 소켓으로 송신한다.
-     * 
-     * 데이터 수신:
-     * 1. void ReceiveUpdate()가 돌면서 소켓으로 받는다
-     * 2. binaryHandler객체는 데이터를 언팩하는데 데이터가 충분히 쌓여야 True를 반환한다.
-     *    (이때 out키워드로 바이너리가 반환된다.)
-     * 3. 바이트열을 typeBuff에 push()해준다. 
-     * 4. typeBuff에 push된 데이터는 구조체로 디코딩되어 typeBuff내부 큐에 적재된다.
-     * 5. 아무 스크립트나 typeBuff.pull(구조체의 타입코드)를 통해 원하는 구조체를 반환받을 수 있다 
-     */
-    //재연결및 면결예외관리는 나중에 구현해보자.
-
-    public Socket client;
+    public Socket client { get; private set; }
     IPEndPoint ServerIP;
     int port;
     bool IsConnect=false;
-
     public TypeBuff typeBuff { get; private set; }
     public ClientNetwork(IPAddress connectAddress, int _port, TypeBuff _typeBuff)
     {
@@ -36,7 +15,7 @@ public class ClientNetwork
         ServerIP = new IPEndPoint(connectAddress, _port);
         port = _port;
         
-        //Start
+        //연결
         client.Connect(ServerIP);
         IsConnect = true;
         //MonoBehaviour.print("연결성공");
@@ -47,7 +26,7 @@ public class ClientNetwork
         client = _clinet;
         IsConnect = true;
     }
-    int waittingCount = 0;//1000까지 세면 더미를 하나씩 보내어 상태를 체크한다.
+    int waittingCount = 0;//Update가 1000번 돌 때마다 더미를 하나씩 보내어 연결상태를 체크한다.
     public bool Update()
     {
         if(IsConnect&&client.Connected)
@@ -55,8 +34,7 @@ public class ClientNetwork
             Receive();//tcp연결은 얼만큼 데이터가 오갔는지를 세는 것으로 연결을 가늠할 수 있다.
             Send();
         }
-        //Console.WriteLine("리시브버퍼:" + typeBuff.recieveQueues[0].Count);
-        //Console.WriteLine("센드버퍼:" + typeBuff.SendQueues.Count);
+
         waittingCount++;
         if(waittingCount >=1000)
         {
@@ -64,7 +42,7 @@ public class ClientNetwork
             typeBuff.Push(new DummyData());
         }
         return IsConnect;
-    }
+    }//Send()와 Receive() 호출. 이 함수를 계속 호출해야 입출력이 이뤄짐.
     BinaryHandler binaryHandler = new BinaryHandler(cutTrigger: 4);
     void Send()
     {
@@ -72,7 +50,6 @@ public class ClientNetwork
         while (typeBuff.BinaryPull(out byte[] data))
         {
             count= client.Send(binaryHandler.Pack(data),SocketFlags.None,out SocketError error);
-            //Console.WriteLine(count);
             if (error != SocketError.Success)
             {
                 Console.WriteLine("실패. 소켓종료.");
@@ -84,10 +61,8 @@ public class ClientNetwork
                 IsConnect= false;
                 client.Close();
             }
-            //Console.WriteLine("보낸데이터:" + count);
         }
-    }
-
+    }//typeBuff.BinaryPull(out byte[] data)해서 뽑은 데이터를 모조리 송신
     void Receive()
     {
         int count = 0;
@@ -111,5 +86,5 @@ public class ClientNetwork
             }
         }
         return;
-    }
+    }//typeBuff.BinaryPush(데이터)하여 수신한 데이터를 모조리 저장
 }
