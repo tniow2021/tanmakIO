@@ -19,7 +19,6 @@ public class ClientNetwork
         //Start
         client.Connect(ServerIP);
         IsConnect = true;
-        //MonoBehaviour.print("연결성공");
     }
     public ClientNetwork(Socket _clinet)
     {

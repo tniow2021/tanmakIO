@@ -16,7 +16,7 @@ static class Program
     static void myServer()
     {
         Console.WriteLine("프로그램 시작");
-        Server server = new Server(_port: 2024, _maxUser: 1000);
+        Server server = new Server(_port: 20240, _maxUser: 1000);
         while (true)
         {
             int onlineUserCount = server.Update();

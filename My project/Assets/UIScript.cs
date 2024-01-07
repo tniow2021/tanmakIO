@@ -6,8 +6,13 @@ using UnityEngine.SceneManagement;
 public class UIScript : MonoBehaviour
 {
     //UI는 씬별로 따로 스크립트를 만든뒤 게임매니저에 연결한다.
+
+    public TMPro.TMP_InputField inputField;
+    public static string IPv4="";
     public void HomeToGame()
     {
+        IPv4 = inputField.text;
+
         SceneManager.LoadScene(1);
     }
     public void GameToHome()
