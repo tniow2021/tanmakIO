@@ -1,0 +1,15 @@
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Eexperiment.GeneratedMSBuildEditorConfig.editorconfig
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Eexperiment.AssemblyInfoInputs.cache
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Eexperiment.AssemblyInfo.cs
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Eexperiment.csproj.CoreCompileInputs.cache
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Eexperiment.sourcelink.json
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\bin\Debug\net8.0\Eexperiment.exe
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\bin\Debug\net8.0\Eexperiment.deps.json
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\bin\Debug\net8.0\Eexperiment.runtimeconfig.json
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\bin\Debug\net8.0\Eexperiment.dll
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\bin\Debug\net8.0\Eexperiment.pdb
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Eexperiment.dll
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\refint\Eexperiment.dll
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Eexperiment.pdb
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Eexperiment.genruntimeconfig.cache
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\ref\Eexperiment.dll

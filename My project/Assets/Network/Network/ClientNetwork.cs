@@ -5,7 +5,7 @@ public class ClientNetwork
     public Socket client { get; private set; }
     IPEndPoint ServerIP;
     int port;
-    bool IsConnect=false;
+    public bool IsConnect { get; private set; } = false;
 
     public TypeBuff typeBuff { get; private set; }
     public ClientNetwork(IPAddress connectAddress, int _port, TypeBuff _typeBuff)
@@ -16,9 +16,7 @@ public class ClientNetwork
         ServerIP = new IPEndPoint(connectAddress, _port);
         port = _port;
         
-        //Start
-        client.Connect(ServerIP);
-        IsConnect = true;
+        
     }
     public ClientNetwork(Socket _clinet)
     {
@@ -27,7 +25,38 @@ public class ClientNetwork
         IsConnect = true;
     }
 
-
+    bool success2 = false;
+    public bool ConnectStart(int second)
+    {
+        System.IAsyncResult result;
+        result = client.BeginConnect(ServerIP, ConnectCompletedEvent, null);
+        bool success = result.AsyncWaitHandle.WaitOne(second*1000, false);
+        success2 = false;
+        if (success)
+        {
+            if(success2)//대기시간이 다가기전애 비연결됨으로 반환되는 수가 있었기때문에 추가.
+            {
+                client.EndConnect(result);
+                IsConnect = false;
+                return false;
+            }
+            
+        }
+        client.Close();
+        IsConnect = false;
+        return false;
+    }
+    void ConnectCompletedEvent(System.IAsyncResult ar)
+    {
+        if(ar.CompletedSynchronously)//연결되었으면
+        {
+            success2 = true;
+        }
+        else
+        {
+            success2 = false;
+        }
+    }
     public bool Update()
     {
         if(IsConnect)

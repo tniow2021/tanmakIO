@@ -42,8 +42,16 @@ public class InGameNet : MonoBehaviour
             print("error:RemoveUserFormMap");
         }
     }
+
+    private void Start()
+    {
+        if(GameManager.GetNetwork().IsConnect is false)
+        {
+            this.enabled = false;
+        }
+    }
     //Update문이 계속 돌며 서버에서 정보를 받습니다.
-    public void Update()
+    void Update()
     {
         TypeBuff typeBuff = GameManager.GetTypeBuff();
         while (typeBuff.pull(out INetStruct st,TypeCode.UserTransform))

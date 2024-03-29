@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 public class GameManager
 {
+    public static bool IsTest = true;
     /*
      * 
      */
@@ -10,17 +11,31 @@ public class GameManager
     ClientNetwork network;
     public int ID { get; private set; } = 0;
     public static TypeBuff GetTypeBuff() { return Instance.network.typeBuff; }
+    public static ClientNetwork GetNetwork() { return Instance.network; }
     public GameManager() 
     {
         if (Instance is not null) return;
         Instance = this;
-        IPAddress ServerIP = Dns.GetHostAddresses("ec2-18-191-167-50.us-east-2.compute.amazonaws.com")[0];
-        //IPAddress ServerIP = IPAddress.Parse(UIScript.IPv4);
+        IPAddress ServerIP;
+        if (IsTest)
+        {
+            ServerIP = IPAddress.Loopback;
+        }
+        else
+        {
+            ServerIP = Dns.GetHostAddresses("www.tempdomain123.shop")[0];
+        }
+        
         int port = 20240;
-        //네트워크 객체에 타입버퍼 객체를 넣어준다.
-
-        MonoBehaviour.print("연결성공");
         network = new ClientNetwork(ServerIP, port,new TypeBuff());
+        if (network.ConnectStart(second: 5))
+        {
+            MonoBehaviour.print("연결성공");
+        }
+        else
+        {
+            MonoBehaviour.print("연결실패");
+        }
         GetTypeBuff().Push(new DummyData());//처음에 주는 패킷은 서버가 못받는 것 같아서 더미를 하나 보낸다.
         GetTypeBuff().Push(new AccessRequest());
     }

@@ -1,0 +1,105 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
+using System.Text;
+
+namespace Eexperiment
+{
+    public class Packet:IDisposable
+    {
+
+        public byte[] DataEncoded;
+    }
+    public interface INetData
+    {
+        public abstract static int GetNumber();
+        public byte[] Encoding();
+        public void Decoding(byte[]data);
+    }
+    public delegate void RecieveEvent(INetData data);
+    //자료의 패킹과 언패킹, 인디코딩, 이벤트와 데이터의 저장등을 맡음
+    public class Harbor<TypeEnum> where TypeEnum : Enum
+    {
+        RecieveEvent[] RecieveEvents;
+        Queue<byte[]> SendQueue;
+        Queue<byte[]>[] recieveQueues;
+
+        int maxTypeIndex;
+        public Harbor()
+        {
+            maxTypeIndex = System.Enum.GetValues(typeof(TypeEnum)).Length - 1;
+            RecieveEvents = new RecieveEvent[maxTypeIndex];
+
+            SendQueue = new Queue<byte[]>();
+
+            recieveQueues = new Queue<byte[]>[maxTypeIndex];
+            for (int i = 0; i < maxTypeIndex; i++)
+            {
+                recieveQueues[i] = new Queue<byte[]>();
+            }
+        }
+        public bool TryRecieveEventRegister(int typeNumber, RecieveEvent r)
+        {
+            if (typeNumber > RecieveEvents.Length - 1)
+            {
+                return false;
+            }
+            RecieveEvents[typeNumber] = r;
+            return true;
+        }
+        public void Push(INetData dd)
+        {
+            SendQueue.Enqueue(dd.Encoding());
+        }
+        public bool Pull(ref INetData nd,int typeNumber)
+        {
+            if (typeNumber > maxTypeIndex)
+            {
+                return false;
+            }
+            nd.Decoding(recieveQueues[typeNumber].Dequeue());
+            return  true;
+        }
+        public bool Pull<T>(ref INetData nd)where T:INetData
+        {
+            if (T.GetNumber() > maxTypeIndex)
+            {
+                return false;
+            }
+            nd.Decoding(recieveQueues[T.GetNumber()].Dequeue());
+            return true;
+        }
+        public void BytesPush(Packet packet)
+        {
+            
+        }
+        public Packet BytePull()
+        {
+
+        }
+    }
+
+
+    public enum sd
+    {
+        eeeee
+    }
+    class test
+    {
+        [seria]
+        class eeeee : INetData
+        {
+            public static int GetNumber()
+            {
+                return (int)sd.eeeee;
+            }
+
+            static void mm()
+            {
+
+            }
+        }
+    }
+}
