@@ -1,34 +1,79 @@
 ﻿using Conversion;
-using System.Linq.Expressions;
-using System.Net;
-using System.Net.Sockets;
-using System.Security.Cryptography;
 using static System.Console;
 
 
-static class Program
+namespace Eexperiment
 {
+    static class Program
+    {
+        static Harbor harbor;
+        static ClinetManager clinetManager;
 
-    static bool exit = false;
-    static void Main()
-    {
-        Console.WriteLine(5);
-    }
+        static Task<int> Data_Communicating_And_Processing;
+        public static int maxThreadNumber {  get;private set; }
+        public static int port { get; private set; }
+        static void Main()
+        {
+            while (true)
+            {
+                try 
+                { 
+                    WriteLine("Enter the maximum number of processors on this computer.");
+                    string t = ReadLine()+"";
+                    maxThreadNumber = Convert.ToInt32(t);
 
-    static Harbor harbor;
-    static void DataCommunicating()
-    {
-        //while (exit is false)
-        //{  
-        //}
-    }
-    static void processing()
-    {
-        //while (exit is false)
-        //{
-        //}
+                    WriteLine("Port number setting.");
+                    t = ReadLine() + "";
+                    port = Convert.ToInt32(t);
+                    if(port<=0||port>short.MaxValue)
+                    {
+                        WriteLine("error: Port number is out of range. Try again.");
+                        continue;
+                    }
+                }
+                catch(Exception e)
+                {
+                    WriteLine(e.ToString());
+                    WriteLine("Enter again");
+                    continue;
+                }
+                WriteLine($"Is {maxThreadNumber}, {port} what you entered ? (yn)");
+                string tt = ReadLine()+"";
+                if(tt!="y")
+                {
+                    WriteLine("try again");
+                }
+                else
+                {
+                    break;
+                }
+            }
+            WriteLine("start");
+            try
+            {
+                clinetManager = new ClinetManager();
+                harbor = new Harbor((short)port);
+                harbor.AcceptingStart();
+            }
+            catch (Exception e)
+            {
+                WriteLine("error");
+                WriteLine(e.ToString());
+                WriteLine("Restart the program");
+                return;
+            }
+
+            Data_Communicating_And_Processing = new Task<int>(DCP);
+            Thread.Sleep(90000000);
+        }
+        static int DCP()
+        {
+            return 0;
+        }
     }
 }
+
+
 /*
  * 
  * 
