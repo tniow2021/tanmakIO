@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MY_UNITY\\unity_git\\tanmakIO\\Eexperiment\\Eexperiment.csproj": {}
+    "D:\\MY_UNITY\\unity_git\\tanmakIO\\Eexperiment\\Experiment.csproj": {}
   },
   "projects": {
-    "D:\\MY_UNITY\\unity_git\\tanmakIO\\Eexperiment\\Eexperiment.csproj": {
+    "D:\\MY_UNITY\\unity_git\\tanmakIO\\Eexperiment\\Experiment.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Eexperiment\\Eexperiment.csproj",
-        "projectName": "Eexperiment",
-        "projectPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Eexperiment\\Eexperiment.csproj",
+        "projectUniqueName": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Eexperiment\\Experiment.csproj",
+        "projectName": "Experiment",
+        "projectPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Eexperiment\\Experiment.csproj",
         "packagesPath": "C:\\Users\\gimda\\.nuget\\packages\\",
         "outputPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Eexperiment\\obj\\",
         "projectStyle": "PackageReference",

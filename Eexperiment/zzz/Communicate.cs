@@ -1,9 +1,9 @@
 ﻿using System;
 using static System.Console;
-using Eexperiment;
+using Experiment;
 using System.Net.Sockets;
 
-namespace Eexperiment
+namespace Experiment
 {
     public delegate int SendFuntion(Span<byte> buff);
     public delegate int RecieveFuntion(Span<byte> buff);

@@ -1,19 +1,21 @@
 ﻿using Conversion;
-using Eexperiment;
+using Experiment;
 using System.Net;
 using System.Net.Sockets;
 using static System.Console;
-
-namespace Eexperiment
+namespace Experiment.NetworkIO
 {
-    public delegate void TakeData(Convertible cb);
-    public class Harbor
+    /// <summary>
+    /// 소켓을 받는 역할
+    /// </summary>
+    public class Greeter
     {
         TakeData[] takeData;
         int maxPortIndex;
         Socket listener;
-        List<Socket> clients=new List<Socket>();
-        public Harbor(short portNumber)
+
+        public SocketConnectEvent connectEvent;
+        public Greeter(short portNumber)
         {
             takeData = new TakeData[portNumber];
             maxPortIndex = portNumber - 1;
@@ -22,6 +24,7 @@ namespace Eexperiment
                 AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             listener.Bind(new IPEndPoint(IPAddress.Any, portNumber));
         }
+
         public bool RegisterPort(int port, TakeData TD)//중복등록은 안되게함
         {
             if (takeData[port] is not null)
@@ -46,7 +49,7 @@ namespace Eexperiment
                 Accepting(args);
                 return IsSuccess.Success;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 WriteLine(e.ToString());
                 return IsSuccess.failure;
@@ -54,7 +57,7 @@ namespace Eexperiment
         }
         public void AcceptingFinish()
         {
-            stopAcceping=true;
+            stopAcceping = true;
             //&&&여기에 비동기 작업을 취소하는 코드추가
         }
         void Accepting(SocketAsyncEventArgs args)
@@ -67,7 +70,7 @@ namespace Eexperiment
                 // 서버는 승인요청을 받는 작업을 할 SocketAsyncEventArgs 객체와 함께
                 // 클라이언트의 요청이 들어오면 승인 작업을 하도록 처리합니다.
 
-                WriteLine("씨발1");
+                //WriteLine("씨발1");
                 pending = listener.AcceptAsync(args);
                 //비동기로 승인을 대기해야할 때가 오면 pending이 true가 되고 루프가 끝난다.
                 //args에 넣어둔 콜백함수는 이 함수를 다시 호출한다. 
@@ -77,7 +80,7 @@ namespace Eexperiment
                 }
             }
         }
-        void 비동기적완료(object sender,SocketAsyncEventArgs args)
+        void 비동기적완료(object sender, SocketAsyncEventArgs args)
         {
             ProcessAccept(args);
             //반복
@@ -85,14 +88,13 @@ namespace Eexperiment
         }
         void ProcessAccept(SocketAsyncEventArgs args)
         {
-            if(args.SocketError == SocketError.Success)
+            if (args.SocketError == SocketError.Success)
             {
-                clients.Add(args.AcceptSocket);
-                WriteLine("연결됨");
+                connectEvent(args.AcceptSocket);
             }
         }
-
-
+    }
+}
         //public int Send(int UserID,Span<byte> data)
         //{
         //    int count=0;
@@ -134,8 +136,6 @@ namespace Eexperiment
         //    }
         //    */
         //}
-    }
-}
 
 /*
  * 많은 유저에게서 데이터를 받는 일은 병렬처리가 필요한 작업이다.

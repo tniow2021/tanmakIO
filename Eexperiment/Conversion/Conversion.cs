@@ -1,7 +1,6 @@
 ﻿using System.Text;
-using Conversion;
 
-namespace Conversion
+namespace Experiment.Conversion
 {
     public static class BaseType
     {
