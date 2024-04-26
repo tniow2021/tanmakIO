@@ -9,6 +9,12 @@ using System.Threading.Tasks;
 
 namespace Experiment.NetWorkIO
 {
+    //https://russell-seo.tistory.com/18
+    //https://russell-seo.tistory.com/18
+    //https://stackoverflow.com/questions/69295467/does-the-function-socket-select-in-c-sharp-use-epoll-when-os-in-linux
+    //https://stackoverflow.com/questions/73506685/is-blocking-code-really-expensive-on-modern-systems
+    //https://leafbird.github.io/devnote/2020/12/27/C-%EA%B3%A0%EC%84%B1%EB%8A%A5-%EC%84%9C%EB%B2%84-System-IO-Pipeline-%EB%8F%84%EC%9E%85-%ED%9B%84%EA%B8%B0/
+    //https://reqres.tistory.com/9
     public class Client
     {
         private ClientManager cm;

@@ -1,0 +1,5 @@
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Experiment.GeneratedMSBuildEditorConfig.editorconfig
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Experiment.AssemblyInfoInputs.cache
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Experiment.AssemblyInfo.cs
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Experiment.csproj.CoreCompileInputs.cache
+D:\MY_UNITY\unity_git\tanmakIO\Eexperiment\obj\Debug\net8.0\Experiment.sourcelink.json
