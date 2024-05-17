@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\conversion\\conversion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:conversion\\conversion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\networking\\userio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\userio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\program\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:program\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\program\\etcetera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:program\\etcetera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\networking\\accepter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\networking\\networking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\networking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\program\\etcetera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:program\\etcetera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,11 +34,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Conversion.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Conversion\\Conversion.cs",
+              "RelativeDocumentMoniker": "Conversion\\Conversion.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Conversion\\Conversion.cs",
+              "RelativeToolTip": "Conversion\\Conversion.cs",
+              "ViewState": "AQIAAIEAAAAAAAAAAAAiwIoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T04:14:21.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserIO.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\UserIO.cs",
+              "RelativeDocumentMoniker": "Networking\\UserIO.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\UserIO.cs",
+              "RelativeToolTip": "Networking\\UserIO.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAAABgAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T04:09:04.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Networking.cs",
               "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\Networking.cs",
               "RelativeDocumentMoniker": "Networking\\Networking.cs",
@@ -49,33 +83,33 @@
               "RelativeDocumentMoniker": "Program\\Etcetera.cs",
               "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Program\\Etcetera.cs",
               "RelativeToolTip": "Program\\Etcetera.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-02T17:04:36.415Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Accepter.cs",
               "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\Accepter.cs",
               "RelativeDocumentMoniker": "Networking\\Accepter.cs",
               "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\Accepter.cs",
               "RelativeToolTip": "Networking\\Accepter.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAA4wDwAAABEAAAA",
+              "ViewState": "AQIAADAAAAAAAAAAAAA4wAYAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-02T17:00:36.389Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Program\\Program.cs",
               "RelativeDocumentMoniker": "Program\\Program.cs",
               "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Program\\Program.cs",
               "RelativeToolTip": "Program\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAFAAAA",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAywAMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-02T16:58:22.475Z",
               "EditorCaption": ""

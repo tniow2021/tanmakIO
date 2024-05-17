@@ -4,29 +4,38 @@ using sex;
 
 namespace sex.Networking
 {
-    public class Accepter
+    public class Accepter: Machine
     {
         Socket listener;
-        TakeSocket TakeSocket;
-        public Accepter(ushort portNumber,TakeSocket ts)
+        Action<Socket> socketConnectEvent;
+        public Accepter(ushort portNumber, Action<Socket> ack)
         {
             listener = new Socket(
                 AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             listener.Bind(new IPEndPoint(IPAddress.Any, portNumber));
-            TakeSocket = ts;
+            socketConnectEvent = ack;
         }
         
-        bool stop = false;
+        bool stop = true;
+        SocketAsyncEventArgs args;
+        public void Init()
+        {
+            args = new SocketAsyncEventArgs();
+            args.Completed += new EventHandler<SocketAsyncEventArgs>(CallbackOfArgs);
+        }
         public IsSuccess Start()
         {
             try
             {
-                stop = false;
-                listener.Listen(1000);
-                SocketAsyncEventArgs args = new SocketAsyncEventArgs();
-                args.Completed += new EventHandler<SocketAsyncEventArgs>(CallbackOfArgs);
-                Accepting(args);
-                return IsSuccess.Success;
+                if (stop == true)
+                {
+                    stop = false;
+                    listener.Listen(1000);
+                    Accepting(args);
+                    return IsSuccess.Success;
+                }
+                else return IsSuccess.failure;
+                
             }
             catch (Exception e)
             {
@@ -68,7 +77,7 @@ namespace sex.Networking
         {
             if (args.SocketError == SocketError.Success)
             {
-                TakeSocket(args.AcceptSocket);
+                socketConnectEvent(args.AcceptSocket);
             }
         }
     }
