@@ -231,12 +231,13 @@ namespace sex.Conversion
             }
         }
     }
-    public class Decoder
-    {
-        public IsSuccess Decode(Span<byte>sb,out Convertible cv)
-        {
-            ConversionTable.Decode[3]+=
-            return IsSuccess.Success;
-        }
-    }
+    //public class Decoder
+    //{
+        
+    //    public IsSuccess Decode(Span<byte>sb,out Convertible cv)
+    //    {
+    //        ConversionTable.Decode[3]+=
+    //        return IsSuccess.Success;
+    //    }
+    //}
 }
