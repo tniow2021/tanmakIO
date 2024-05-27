@@ -1,0 +1,15 @@
+C:\Users\user\Documents\GitHub\tanmakIO\sex\obj\Debug\net8.0\sex.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\GitHub\tanmakIO\sex\obj\Debug\net8.0\sex.AssemblyInfoInputs.cache
+C:\Users\user\Documents\GitHub\tanmakIO\sex\obj\Debug\net8.0\sex.AssemblyInfo.cs
+C:\Users\user\Documents\GitHub\tanmakIO\sex\obj\Debug\net8.0\sex.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\GitHub\tanmakIO\sex\obj\Debug\net8.0\sex.sourcelink.json
+C:\Users\user\Documents\GitHub\tanmakIO\sex\bin\Debug\net8.0\sex.exe
+C:\Users\user\Documents\GitHub\tanmakIO\sex\bin\Debug\net8.0\sex.deps.json
+C:\Users\user\Documents\GitHub\tanmakIO\sex\bin\Debug\net8.0\sex.runtimeconfig.json
+C:\Users\user\Documents\GitHub\tanmakIO\sex\bin\Debug\net8.0\sex.dll
+C:\Users\user\Documents\GitHub\tanmakIO\sex\bin\Debug\net8.0\sex.pdb
+C:\Users\user\Documents\GitHub\tanmakIO\sex\obj\Debug\net8.0\sex.dll
+C:\Users\user\Documents\GitHub\tanmakIO\sex\obj\Debug\net8.0\refint\sex.dll
+C:\Users\user\Documents\GitHub\tanmakIO\sex\obj\Debug\net8.0\sex.pdb
+C:\Users\user\Documents\GitHub\tanmakIO\sex\obj\Debug\net8.0\sex.genruntimeconfig.cache
+C:\Users\user\Documents\GitHub\tanmakIO\sex\obj\Debug\net8.0\ref\sex.dll
