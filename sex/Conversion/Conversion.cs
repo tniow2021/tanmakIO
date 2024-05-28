@@ -170,11 +170,11 @@ namespace sex.Conversion
                 BaseType.Decode(out z, ms);
             }
         }
-        public class asasdad:Convertible
-        {
-            Vecter3Int a,b,c;
-            static int ww = Vecter3Int.GetMinLength()*3;
-        }
+        //public class asasdad:Convertible
+        //{
+        //    Vecter3Int a,b,c;
+        //    static int ww = Vecter3Int.GetMinLength()*3;
+        //}
     }
     public static class DynamicType
     {

@@ -1,12 +1,16 @@
 ﻿
+using sex;
 using sex.Networking;
 using System.Net.Sockets;
 
 public static class Program
 {
+    static Root root;
     static int Main()
     {
-        Accepter accepter = new Accepter(2024, socketConnectEvent);
+        root=new Root();
+        Test.AllTest();
+        //Accepter accepter = new Accepter(2024, socketConnectEvent);
         return 0;
     }
     static void socketConnectEvent(Socket sk)

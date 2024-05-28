@@ -7,7 +7,6 @@
     }
     public interface Machine
     {
-        public void Init();
         public IsSuccess Start();
         public void Stop();
     }
