@@ -3,6 +3,8 @@ using sex.Pooling;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,7 +39,16 @@ namespace sex
         }
         public static void UserIOTest()
         {
-            //UserIO a=new UserIO();
+            Socket listener = new Socket(
+                AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            listener.Bind(new IPEndPoint(IPAddress.Any, 20240));
+            listener.Listen(10);
+            Socket client = listener.Accept();
+            Console.WriteLine("누군가 왔다.");
+            UserIO a=new UserIO();
+            a.SetUserIO(client, 9);
+            a.Assemble();
+            a.ReciveStart();
         }
         public class abc
         {

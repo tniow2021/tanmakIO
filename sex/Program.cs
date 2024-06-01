@@ -11,6 +11,7 @@ public static class Program
         root=new Root();
         Test.AllTest();
         //Accepter accepter = new Accepter(2024, socketConnectEvent);
+        Thread.Sleep(200000000);
         return 0;
     }
     static void socketConnectEvent(Socket sk)

@@ -9,17 +9,29 @@ static class Program
     static SocketAsyncEventArgs args;
     static void Main()
     {
-        DynamicBuff<byte> b = new DynamicBuff<byte>(new byte[100]);
 
 
-        for(int i=0; i<120; i++)
-        {
-            bool r= b.Write(1, out Span<byte> span);
-            Console.WriteLine(r);
-
-            bool r2 = b.Read(1, out Span<byte> span2);
-            Console.WriteLine(r);
+        Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        s.Connect(new IPEndPoint(IPAddress.Loopback, 20240));
+        Console.WriteLine("연결됨");
+        for(int i=0;i<3000;i++)
+        { 
+            Console.ReadLine();
+            s.Send(System.Text.Encoding.Default.GetBytes("sefsefsㄴㄹㄴㄹㄴsef" + i + "sfvsvsev"));
+           
+            Console.WriteLine("보냄");
         }
+        //DynamicBuff<byte> b = new DynamicBuff<byte>(new byte[100]);
+
+
+        //for(int i=0; i<120; i++)
+        //{
+        //    bool r= b.Write(1, out Span<byte> span);
+        //    Console.WriteLine(r);
+
+        //    bool r2 = b.Read(1, out Span<byte> span2);
+        //    Console.WriteLine(r);
+        //}
         //server=new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         //server.Bind(new IPEndPoint(IPAddress.Any, 20240));
         //server.Listen(10);

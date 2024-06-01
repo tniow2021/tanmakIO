@@ -8,12 +8,12 @@ namespace sex.Networking
     {
         Socket listener;
         Action<Socket> socketConnectEvent;
-        public Accepter(ushort portNumber, Action<Socket> ack)
+        public Accepter(ushort portNumber, Action<Socket> socketConnectEvent)
         {
             listener = new Socket(
                 AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             listener.Bind(new IPEndPoint(IPAddress.Any, portNumber));
-            socketConnectEvent = ack;
+            this.socketConnectEvent = socketConnectEvent;
         }
         
         bool stop = true;
@@ -67,7 +67,7 @@ namespace sex.Networking
                 }
             }
         }
-        void CallbackOfArgs(object sender, SocketAsyncEventArgs args)
+        void CallbackOfArgs(object? sender, SocketAsyncEventArgs args)
         {
             ProcessAccept(args);
             //반복

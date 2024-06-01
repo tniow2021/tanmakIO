@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MY_UNITY\\unity_git\\tanmakIO\\Test\\Test.csproj": {}
+    "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\Test.csproj": {}
   },
   "projects": {
-    "D:\\MY_UNITY\\unity_git\\tanmakIO\\Test\\Test.csproj": {
+    "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Test\\Test.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\Test.csproj",
         "projectName": "Test",
-        "projectPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Test\\Test.csproj",
-        "packagesPath": "C:\\Users\\gimda\\.nuget\\packages\\",
-        "outputPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\Test\\obj\\",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\Test.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\gimda\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
