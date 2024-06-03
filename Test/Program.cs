@@ -14,11 +14,16 @@ static class Program
         Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         s.Connect(new IPEndPoint(IPAddress.Loopback, 20240));
         Console.WriteLine("연결됨");
-        for(int i=0;i<3000;i++)
+        byte[] t = new byte[100];
+        for(int i=0;i<30000000;i++)
         { 
             Console.ReadLine();
-            s.Send(System.Text.Encoding.Default.GetBytes("sefsefsㄴㄹㄴㄹㄴsef" + i + "sfvsvsev"));
-           
+            //s.Send(System.Text.Encoding.Default.GetBytes("sefsefsㄴㄹㄴㄹㄴsef" + i + "sfvsvsev"));
+            for(byte i2=0;i2<100;i2++)
+            {
+                t[i2] =(byte) i;
+            }
+            s.Send(t);
             Console.WriteLine("보냄");
         }
         //DynamicBuff<byte> b = new DynamicBuff<byte>(new byte[100]);

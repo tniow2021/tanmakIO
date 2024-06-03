@@ -2,7 +2,7 @@
 
 namespace sex.Pooling
 {
-    public class BasicPool<T> :IPool<T> where T : class
+    public class BasicPool<T> :IPool<T> //where T : class
     {
         T[] arr;
         int top = -1;

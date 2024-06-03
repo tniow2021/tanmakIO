@@ -1,18 +1,22 @@
 ﻿using sex.Pooling;
 using System.Net.Sockets;
 using sex.DataStructure;
-using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace sex.Networking
 {
-    public class UserIO : MultilayerPoolingObjects, Machine
+    public class UserIO : PoolingObjects
     {
         static Socket emptySock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
+        static Action<UserIOError> emptyEvent = (UserIOError u) => { };
+        
+        public Action<UserIOError> errorEvent= emptyEvent;
+        Socket sk;
         DynamicBuff<byte> dynamicBuff;
-        public Socket sk;
         int id;
+        int packetSizeLimit;
         SocketAsyncEventArgs SocketArgs;
-        public UserIO()//Socket sk, int id)
+        
+        public UserIO(int packetSizeLimit=1024)
         {
             dynamicBuff=new DynamicBuff<byte> ();
             sk = emptySock;
@@ -20,16 +24,17 @@ namespace sex.Networking
             SocketArgs.Completed += new EventHandler<SocketAsyncEventArgs>(Recieve_Completed);
             IsRunning = false;
         }
-        public void SetUserIO(Socket sk, int id)
+        public void SetUserIO(Socket sk, int id,int packetSizeLimit)
         {
             this.sk = sk;
             this.id = id;
+            this.packetSizeLimit = packetSizeLimit;
         }
 
         // interface method of MultilayerPoolingObjects
         public void Assemble()
         {
-            dynamicBuff.SetBuff(Root.root.byte10000arrayPool.GetBlock());
+            dynamicBuff.SetBuff(Root.root.byte10000arrayPool.GetBlock(),0,0);
             SocketArgs.SetBuffer(dynamicBuff.GetBuff(),0, dynamicBuff.GetNumContiguousSpaces());
         }
         public void Disassemble()
@@ -39,15 +44,10 @@ namespace sex.Networking
             SocketArgs.SetBuffer(null);
         }
 
-        // interface method of Machine
+        //
         public bool IsRunning { get; private set; }
         bool stopSign = false;
-        public IsSuccess Start()
-        {
-            IsRunning = true;
-            return IsSuccess.Success;
-        }
-        public void Stop()
+        public void AllStop()
         {
             stopSign = false;
         }
@@ -58,76 +58,110 @@ namespace sex.Networking
             if (sk is null) return IsSuccess.failure;
             if(IsRunning is false)
             {
+                //초기화 해야하나,,,
+                int n = dynamicBuff.GetNumContiguousSpaces();
+                int w = dynamicBuff.GetWriteOffset();
+                SocketArgs.SetBuffer(dynamicBuff.GetBuff(), w, n);
                 RecieveProcess(SocketArgs);
                 IsRunning = true;
                 return IsSuccess.Success;
             }
             return IsSuccess.failure;
         }
-        void RecieveProcess(SocketAsyncEventArgs args)
+        void Recieve_Completed(object? s,SocketAsyncEventArgs args)
+        {
+            Recieve_Data(args);
+            RecieveProcess(args);
+        }
+        bool ArgsSetOffset(SocketAsyncEventArgs args)
         {
             int n = dynamicBuff.GetNumContiguousSpaces();
-            if (n>=20)
+            if (n>= packetSizeLimit+5)//그냥 1만 더해도 되지만 넉넉하게 5
             {
                 int w = dynamicBuff.GetWriteOffset();
-                SocketArgs.SetBuffer(dynamicBuff.GetBuff(), w, n);
+                //Console.WriteLine("남은  용량" + n);
+                args.SetBuffer(w, n);
+                return true;
             }
             else
             {
                 dynamicBuff.Arrange();
                 n=dynamicBuff.GetNumContiguousSpaces();
                 int w = dynamicBuff.GetWriteOffset();
-                SocketArgs.SetBuffer(dynamicBuff.GetBuff(), w, n);
+                //Console.WriteLine("남은  용량" + n);
+                if(n< packetSizeLimit+5)
+                {
+                    return false;
+                }
+                args.SetBuffer(w, n);
+                return true;
             }
-
-            Console.WriteLine("흠..");
+        }
+        void RecieveProcess(SocketAsyncEventArgs args)
+        {
             bool pending = false;
             while(!pending)//즉시 완료시
             {
-                pending=sk.ReceiveAsync(SocketArgs);
-                if(!pending&& stopSign is false)
+                bool IsSuccess= ArgsSetOffset(args);
+                if(IsSuccess is false)
                 {
-                    Recieve_Completed(null,SocketArgs);
+                    stopSign = true;
+                    errorEvent(UserIOError.InsufficientBufferSpace);
+                    return;
+                }
+                //Console.WriteLine("비동기동작중");
+                if (stopSign is true)
+                    return;
+                //Console.WriteLine("비동기동작중2");
+                pending =sk.ReceiveAsync(args);
+
+                if(pending is false&& stopSign is false)
+                {  
+                    Recieve_Data(args);
                 }
             }    
         }
-        void Recieve_Completed(object? s, SocketAsyncEventArgs args)
+        void Recieve_Data( SocketAsyncEventArgs args)
         {
-            if (stopSign is true)
-                return;
-
-            switch (args.SocketError)
+            if(args.SocketError== SocketError.Success)
             {
-                case SocketError.Success:
-                    //
                     dynamicBuff.IncreaseWriteOffset(args.BytesTransferred);
-                    //
                     Read();
-                    Console.WriteLine("흠..2");
-                    RecieveProcess(args);
-                    break;
-                case SocketError.SocketError:
-                    stopSign = true;
-                    break;
-                default:
-                    stopSign = true;
-                    break;
+            }
+            else
+            {
+                ErrorProcess(args.SocketError);
             }
         }
-        Decoder decoder = System.Text.Encoding.Default.GetDecoder();
-        Memory<char>message=new Memory<char>(new char[2000]);
         public void Read()
         {
             if(dynamicBuff.ReadAll(out Span<byte>data))
             {
-                decoder.Convert(
-                    bytes: data,
-                    chars: message.Span,
-                    flush: false,
-                    out int bytesUsed,out int charsUsed, out bool completed);
-                    {
-                    Console.WriteLine(message);
+                for(int i=0;i<data.Length;i++)
+                {
+                    Console.Write(data[i]+" ");
                 }
+                Console.WriteLine();
+            }
+        }
+        void ErrorProcess(SocketError error)
+        {
+            switch (error)
+            {
+                case SocketError.SocketError:
+                    stopSign = true;
+                    Console.WriteLine("닫힘");
+                    sk.Close();
+                    Console.WriteLine("닫힘2");
+                    errorEvent(UserIOError.SocketClose);
+                    break;
+                default:
+                    stopSign = true;
+                    Console.WriteLine("닫힘");
+                    sk.Close();
+                    Console.WriteLine("닫힘2");
+                    errorEvent(UserIOError.SocketClose);
+                    break;
             }
         }
     }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace sex.DataStructure
+﻿namespace sex.DataStructure
 {
     public class DynamicBuff<T>
     {
@@ -24,7 +18,11 @@ namespace sex.DataStructure
             w = 0;
             r = 0;
         }
-        public void SetBuff(T[]buff,int writeStartIndex=0,int ReadStartIndex=0)
+        public void SetBuff(T[]buff)
+        {
+            this.buff = buff;
+        }
+        public void SetBuff(T[]buff,int writeStartIndex,int ReadStartIndex)
         {
             this.buff=buff;
             L = buff.Length;
@@ -41,7 +39,17 @@ namespace sex.DataStructure
         }
         public void IncreaseWriteOffset(int plus)
         {
-            w+= plus;
+            if(w+plus>L-1)
+            {
+                Arrange();
+                if(w>=L-1)
+                {
+                    throw new Exception("dynamic buff is max");
+                }
+                w+= plus;
+                return;
+            }
+            w += plus;
         }
         public bool Write(int n, out Memory<T> memory)
         {
@@ -123,9 +131,11 @@ namespace sex.DataStructure
         }
         public bool ReadAll(out Span<T> span)
         {
-            if(w-r>0)
+            Console.WriteLine("rrr" + r);
+            if (w-r>0)
             {
                 span = new Span<T>(buff, r, w - r);
+                r =w;
                 return true;
             }
             span=Span<T>.Empty;
@@ -135,7 +145,8 @@ namespace sex.DataStructure
         {
             if (w - r > 0)
             {
-                memory = new Memory<T>(buff, r, w - r);
+                memory = new Memory<T>(buff, r, w - r); 
+                r = w;
                 return true;
             }
             memory = Memory<T>.Empty;
@@ -144,13 +155,15 @@ namespace sex.DataStructure
 
         public void Arrange()
         {
+            //Console.WriteLine($"정리전-w:{w}-r{r}------------------------------------------------------------");
             int tempR = r;
-            r = 0;
             w = w - r;
-            for (int i = 0; i < w - r; i++)
+            r = 0;
+            for (int i = 0; i < w - tempR; i++)
             {
                 buff[i] = buff[tempR + i];
             }
+            //Console.WriteLine($"정리후-w:{w}-r{r}-------------------------------------------------------------");
         }
         public int GetNumContiguousSpaces()
         {

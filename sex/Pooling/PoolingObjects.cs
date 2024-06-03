@@ -1,6 +1,6 @@
 ﻿namespace sex.Pooling
 {
-    public interface MultilayerPoolingObjects
+    public interface PoolingObjects
     {
         public void Disassemble();
         public void Assemble();

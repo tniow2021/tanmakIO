@@ -1,21 +1,14 @@
 ﻿namespace sex.Pooling
 {
-    public class Pool<T> : IPool<T> where T : class
+    public class Pool<T> : IPool<T> where T:PoolingObjects
     {
         T[] arr;
-        bool IsMultiLayer = false;
         int top = -1;
         Func<T> constructor;
         public PoolStatistics statistics = new PoolStatistics();
         public Pool(Func<T> constructor, int n)
         {
             this.constructor = constructor;
-
-            //T가 MultilayerPoolingObjects의 파생이면 IsMultiLayer를 true로 설정
-            if (typeof(T).IsSubclassOf(typeof(MultilayerPoolingObjects)))
-            {
-                IsMultiLayer = true;
-            }
             arr = new T[n];
             if (arr == null)
                 throw new Exception("pool error 1");
@@ -41,10 +34,8 @@
             if (top + 1 > 0)
             {
                 T t = arr[top];
-                if (IsMultiLayer)
-                {
-                    ((MultilayerPoolingObjects)t).Assemble();
-                }
+                t.Assemble();
+                
 
                 top--;
                 if (statistics.minCount > top + 1)
@@ -55,7 +46,9 @@
             {
                 statistics.emptyErrorCount++;
                 statistics.allNewCount++;
-                return constructor();
+                var t=constructor();
+                t.Assemble();
+                return t;
             }
         }
         public void RepayBlock(T t)
@@ -68,8 +61,8 @@
                     return;
                 }
                 top++;
-                if (IsMultiLayer)
-                    ((MultilayerPoolingObjects)t).Disassemble();
+
+                t.Disassemble();
 
                 arr[top] = t;
                 if (statistics.maxCount < top + 1)

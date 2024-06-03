@@ -45,9 +45,9 @@ namespace sex
             listener.Listen(10);
             Socket client = listener.Accept();
             Console.WriteLine("누군가 왔다.");
-            UserIO a=new UserIO();
-            a.SetUserIO(client, 9);
-            a.Assemble();
+            UserIO a = Root.root.UserIOPool.GetBlock();
+            a.SetUserIO(client, 9,packetSizeLimit:1024);
+            a.errorEvent=(UserIOError u) => { Console.WriteLine(u.ToString()); Root.root.UserIOPool.RepayBlock(a); };
             a.ReciveStart();
         }
         public class abc

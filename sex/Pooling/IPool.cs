@@ -1,6 +1,6 @@
 ﻿namespace sex.Pooling
 {
-    public interface IPool<T> where T : class
+    public interface IPool<T> 
     {
         public T GetBlock();
         public void RepayBlock(T t);

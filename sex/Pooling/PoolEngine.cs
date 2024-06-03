@@ -1,4 +1,6 @@
-﻿namespace sex.Pooling
+﻿using sex.Networking;
+
+namespace sex.Pooling
 {
     public class PoolEngine
     {
@@ -31,18 +33,34 @@
             Console.WriteLine("---------------------------------------------------------------------------");
         }
 
-        Type multiLayerType = typeof(MultilayerPoolingObjects);
-        public IPool<T> CreatePool<T>(Func<T> Constructor, int n, int id) where T : class
+        Type multiLayerType = typeof(PoolingObjects);
+        public IPool<T> SingleLayerCreatePool<T>(Func<T> Constructor, int n, int id) where T : class
+        {
+            //var d=Constructor as Func<PoolingObjects>;
+            IPool<T> p;
+            p = new BasicPool<T>(Constructor, n);
+            RegisterPool(typeof(T), id, p.GetStatistics());
+            return p;
+        }
+        //public IPool<T> MultiLayerCreatePool<T>(Func<T> Constructor, int n, int id) where T : class,PoolingObjects
+        //{
+        //    IPool<T> p;
+        //    p = new Pool<T>(Constructor, n);
+        //    RegisterPool(typeof(T), id, p.GetStatistics());
+        //    return p;
+        //}
+        public IPool<T>CreatePool<T>(Func<T> constructor, int n, int id)
         {
             IPool<T> p;
-            if (typeof(T).IsSubclassOf(multiLayerType))
-            {
-                p = new Pool<T>(Constructor,n);
-            }
-            else
-                p = new BasicPool<T>(Constructor, n);
-
+            p = new BasicPool<T>(constructor, n);
             RegisterPool(typeof(T), id, p.GetStatistics());
+            return p;
+        }
+        public IPool<T> CreatePool<T>(Func<T> constructor, int n, int id, Type type) where T:PoolingObjects
+        {
+            IPool<T> p;
+            p = new Pool<T>(constructor, n);
+            RegisterPool(type, id, p.GetStatistics());
             return p;
         }
         void RegisterPool(Type poolType, int id, PoolStatistics statistics)
