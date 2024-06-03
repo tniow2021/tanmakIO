@@ -2,33 +2,35 @@
 using System.Net.Sockets;
 using sex.DataStructure;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Diagnostics;
 namespace sex.Networking
 {
     public class UserIO : PoolingObjects
     {
-        static Socket emptySock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        static Action<UserIOError> emptyEvent = (UserIOError u) => { };
-        
-        public Action<UserIOError> errorEvent= emptyEvent;
-        Socket sk;
+        static readonly Socket emptySock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        static readonly Action<UserIOError> emptyEvent = (UserIOError u) => { };
+        static readonly TakeRecievedData emptyEvent2 = (Span<byte> s) => { return 0; };
+
+        public Action<UserIOError> errorEvent = emptyEvent;
+        Socket sk = emptySock;
         DynamicBuff<byte> dynamicBuff;
         int id;
         int packetSizeLimit;
         SocketAsyncEventArgs SocketArgs;
-        
+        TakeRecievedData recieveEvent = emptyEvent2;
         public UserIO(int packetSizeLimit=1024)
         {
             dynamicBuff=new DynamicBuff<byte> ();
-            sk = emptySock;
             SocketArgs = new SocketAsyncEventArgs();
             SocketArgs.Completed += new EventHandler<SocketAsyncEventArgs>(Recieve_Completed);
             IsRunning = false;
         }
-        public void SetUserIO(Socket sk, int id,int packetSizeLimit)
+        public void SetUserIO(Socket sk, int id,int packetSizeLimit, TakeRecievedData recieveEvent)
         {
             this.sk = sk;
             this.id = id;
             this.packetSizeLimit = packetSizeLimit;
+            this.recieveEvent = recieveEvent;
         }
 
         // interface method of MultilayerPoolingObjects
@@ -125,41 +127,46 @@ namespace sex.Networking
         {
             if(args.SocketError== SocketError.Success)
             {
-                    dynamicBuff.IncreaseWriteOffset(args.BytesTransferred);
-                    Read();
+                dynamicBuff.IncreaseWriteOffset(args.BytesTransferred);
+                if(dynamicBuff.NonCountingRead(out Span<byte>span))
+                {
+                    int numberOfProcessedByte = recieveEvent(span);
+                    dynamicBuff.IncreaseReadOffset(numberOfProcessedByte);
+                }
             }
             else
             {
                 ErrorProcess(args.SocketError);
             }
         }
-        public void Read()
-        {
-            if(dynamicBuff.ReadAll(out Span<byte>data))
-            {
-                for(int i=0;i<data.Length;i++)
-                {
-                    Console.Write(data[i]+" ");
-                }
-                Console.WriteLine();
-            }
-        }
+        
+        //public void Read()
+        //{
+        //    if(dynamicBuff.ReadAll(out Span<byte>data))
+        //    {
+        //        for(int i=0;i<data.Length;i++)
+        //        {
+        //            Console.Write(data[i]+" ");
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //}
         void ErrorProcess(SocketError error)
         {
             switch (error)
             {
                 case SocketError.SocketError:
                     stopSign = true;
-                    Console.WriteLine("닫힘");
+                    //Console.WriteLine("닫힘");
                     sk.Close();
-                    Console.WriteLine("닫힘2");
+                    //Console.WriteLine("닫힘2");
                     errorEvent(UserIOError.SocketClose);
                     break;
                 default:
                     stopSign = true;
-                    Console.WriteLine("닫힘");
+                    //Console.WriteLine("닫힘");
                     sk.Close();
-                    Console.WriteLine("닫힘2");
+                    //Console.WriteLine("닫힘2");
                     errorEvent(UserIOError.SocketClose);
                     break;
             }

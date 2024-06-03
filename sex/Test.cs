@@ -24,7 +24,7 @@ namespace sex
             Func<abc> aa = () => { return new abc(); };
             for (int i = 0; i < 30; i++)
             {
-                IPool<abc> abcPool = Root.root.poolEngine.CreatePool<abc>(aa, 4000, 2 + i);
+                IPool<abc> abcPool = Root.root.poolEngine.CreateBasicTypePool<abc>(aa, 4000, 2 + i);
                 abc a;
                 for (int j = 0; j < 800; j++)
                 {
@@ -46,7 +46,28 @@ namespace sex
             Socket client = listener.Accept();
             Console.WriteLine("누군가 왔다.");
             UserIO a = Root.root.UserIOPool.GetBlock();
-            a.SetUserIO(client, 9,packetSizeLimit:1024);
+
+            a.SetUserIO(client, 9, packetSizeLimit: 1024, (Span<byte> span) =>
+            {
+                int count=0;
+                if(span.Length > 5)
+                {
+                    for(int i=0;i<span.Length/5;i++)
+                    {
+                        for(int j=0;j<5;j++)
+                        {
+                            Console.Write(span[i * 5 + j]);
+                            count++;
+                        }
+                        Console.Write("\n");
+                    }
+                    return count;
+                }
+                else
+                {
+                    return 0;
+                }
+            });
             a.errorEvent=(UserIOError u) => { Console.WriteLine(u.ToString()); Root.root.UserIOPool.RepayBlock(a); };
             a.ReciveStart();
         }

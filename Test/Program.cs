@@ -21,7 +21,7 @@ static class Program
             //s.Send(System.Text.Encoding.Default.GetBytes("sefsefsㄴㄹㄴㄹㄴsef" + i + "sfvsvsev"));
             for(byte i2=0;i2<100;i2++)
             {
-                t[i2] =(byte) i;
+                t[i2] =i2;
             }
             s.Send(t);
             Console.WriteLine("보냄");

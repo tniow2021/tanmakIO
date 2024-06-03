@@ -49,18 +49,18 @@ namespace sex.Pooling
         //    RegisterPool(typeof(T), id, p.GetStatistics());
         //    return p;
         //}
-        public IPool<T>CreatePool<T>(Func<T> constructor, int n, int id)
+        public IPool<T>CreateBasicTypePool<T>(Func<T> constructor, int n, int id)
         {
             IPool<T> p;
             p = new BasicPool<T>(constructor, n);
             RegisterPool(typeof(T), id, p.GetStatistics());
             return p;
         }
-        public IPool<T> CreatePool<T>(Func<T> constructor, int n, int id, Type type) where T:PoolingObjects
+        public IPool<T> CreatePool<T>(Func<T> constructor, int n, int id) where T:PoolingObjects
         {
             IPool<T> p;
             p = new Pool<T>(constructor, n);
-            RegisterPool(type, id, p.GetStatistics());
+            RegisterPool(typeof(T), id, p.GetStatistics());
             return p;
         }
         void RegisterPool(Type poolType, int id, PoolStatistics statistics)

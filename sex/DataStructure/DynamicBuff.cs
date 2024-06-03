@@ -1,4 +1,6 @@
-﻿namespace sex.DataStructure
+﻿using System;
+
+namespace sex.DataStructure
 {
     public class DynamicBuff<T>
     {
@@ -50,6 +52,15 @@
                 return;
             }
             w += plus;
+        }
+        public void IncreaseReadOffset(int plus)
+        {
+            if(r+plus<=w)
+            {
+                r+= plus;
+                return;
+            }
+            throw new Exception("dynamic buff. IncreaseReadOffset() error");
         }
         public bool Write(int n, out Memory<T> memory)
         {
@@ -131,7 +142,6 @@
         }
         public bool ReadAll(out Span<T> span)
         {
-            Console.WriteLine("rrr" + r);
             if (w-r>0)
             {
                 span = new Span<T>(buff, r, w - r);
@@ -152,7 +162,16 @@
             memory = Memory<T>.Empty;
             return false;
         }
-
+        public bool NonCountingRead(out Span<T> span)
+        {
+            if (w - r > 0)
+            {
+                span = new Span<T>(buff, r, w - r);
+                return true;
+            }
+            span = Span<T>.Empty;
+            return false;
+        }
         public void Arrange()
         {
             //Console.WriteLine($"정리전-w:{w}-r{r}------------------------------------------------------------");
