@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sex.Conversion
 {
-    public  class Decoder
+    public class Decoder
     {
         public void Input(byte[] data, int start, int length)
         {
