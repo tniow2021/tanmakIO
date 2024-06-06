@@ -1,74 +1,78 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\",
+  "WorkspaceRootPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\networking\\userio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\userio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\root.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:root.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\networking\\accepter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\accepter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\datastructure\\dynamicbuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:datastructure\\dynamicbuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\networking\\takerecieveddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\takerecieveddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\pooling\\ipool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:pooling\\ipool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\pooling\\basicpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:pooling\\basicpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\networking\\userioerror.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\userioerror.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\pooling\\poolengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:pooling\\poolengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\pooling\\pool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\pooling\\pool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:pooling\\pool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\pooling\\poolingobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:pooling\\poolingobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\networking\\userioerror.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\userioerror.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\datastructure\\dynamicbuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:datastructure\\dynamicbuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\conversion\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\pooling\\ipool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:pooling\\ipool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\conversion\\convertiblepooltable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:conversion\\convertiblepooltable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\conversion\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:conversion\\decoder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\program\\etcetera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\conversion\\conversion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:conversion\\conversion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\pooling\\poolengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:pooling\\poolengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\pooling\\poolingobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:pooling\\poolingobjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\networking\\userio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\userio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\networking\\takerecieveddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\takerecieveddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\program\\etcetera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:program\\etcetera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\networking\\networking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\networking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\root.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:root.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|c:\\users\\user\\documents\\github\\tanmakio\\sex\\conversion\\conversion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:conversion\\conversion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\networking\\accepter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\accepter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\pooling\\basicpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:pooling\\basicpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|d:\\my_unity\\unity_git\\tanmakio\\sex\\networking\\networking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED492031-D84A-4726-BF91-EC1E7E5EA0F4}|sex.csproj|solutionrelative:networking\\networking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,28 +82,119 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BasicPool.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Pooling\\BasicPool.cs",
-              "RelativeDocumentMoniker": "Pooling\\BasicPool.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Pooling\\BasicPool.cs",
-              "RelativeToolTip": "Pooling\\BasicPool.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAQwAQAAAAqAAAA",
+              "DocumentIndex": 4,
+              "Title": "ConvertiblePoolTable.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Conversion\\ConvertiblePoolTable.cs",
+              "RelativeDocumentMoniker": "Conversion\\ConvertiblePoolTable.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Conversion\\ConvertiblePoolTable.cs",
+              "RelativeToolTip": "Conversion\\ConvertiblePoolTable.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAywBwAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-02T09:04:55.927Z",
+              "WhenOpened": "2024-06-06T10:16:54.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PoolEngine.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Pooling\\PoolEngine.cs",
+              "RelativeDocumentMoniker": "Pooling\\PoolEngine.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Pooling\\PoolEngine.cs",
+              "RelativeToolTip": "Pooling\\PoolEngine.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAA4wEUAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T08:31:12.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Pool.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Pooling\\Pool.cs",
+              "RelativeDocumentMoniker": "Pooling\\Pool.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Pooling\\Pool.cs",
+              "RelativeToolTip": "Pooling\\Pool.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAiwFoAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T19:11:29.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Decoder.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Conversion\\Decoder.cs",
+              "RelativeDocumentMoniker": "Conversion\\Decoder.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Conversion\\Decoder.cs",
+              "RelativeToolTip": "Conversion\\Decoder.cs",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAiwBcAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T08:59:04.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PoolingObjects.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Pooling\\PoolingObjects.cs",
+              "RelativeDocumentMoniker": "Pooling\\PoolingObjects.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Pooling\\PoolingObjects.cs",
+              "RelativeToolTip": "Pooling\\PoolingObjects.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAswAIAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T15:26:55.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserIO.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\UserIO.cs",
+              "RelativeDocumentMoniker": "Networking\\UserIO.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\UserIO.cs",
+              "RelativeToolTip": "Networking\\UserIO.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAABHwIYAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T04:09:04.631Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Conversion.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Conversion\\Conversion.cs",
+              "RelativeDocumentMoniker": "Conversion\\Conversion.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Conversion\\Conversion.cs",
+              "RelativeToolTip": "Conversion\\Conversion.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAYwCYAAABYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T04:14:21.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DynamicBuff.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\DataStructure\\DynamicBuff.cs",
+              "RelativeDocumentMoniker": "DataStructure\\DynamicBuff.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\DataStructure\\DynamicBuff.cs",
+              "RelativeToolTip": "DataStructure\\DynamicBuff.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAA4wKoAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T15:23:07.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "IPool.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Pooling\\IPool.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Pooling\\IPool.cs",
               "RelativeDocumentMoniker": "Pooling\\IPool.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Pooling\\IPool.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Pooling\\IPool.cs",
               "RelativeToolTip": "Pooling\\IPool.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -109,88 +204,10 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserIO.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Networking\\UserIO.cs",
-              "RelativeDocumentMoniker": "Networking\\UserIO.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Networking\\UserIO.cs",
-              "RelativeToolTip": "Networking\\UserIO.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAA/wIYAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T04:09:04.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Test.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Test.cs",
-              "RelativeDocumentMoniker": "Test.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Test.cs",
-              "RelativeToolTip": "Test.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAAywEMAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T08:36:15.498Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "PoolEngine.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Pooling\\PoolEngine.cs",
-              "RelativeDocumentMoniker": "Pooling\\PoolEngine.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Pooling\\PoolEngine.cs",
-              "RelativeToolTip": "Pooling\\PoolEngine.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAADQAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T08:31:12.617Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Root.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Root.cs",
-              "RelativeDocumentMoniker": "Root.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Root.cs",
-              "RelativeToolTip": "Root.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAA9wA8AAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T06:53:26.29Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DynamicBuff.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\DataStructure\\DynamicBuff.cs",
-              "RelativeDocumentMoniker": "DataStructure\\DynamicBuff.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\DataStructure\\DynamicBuff.cs",
-              "RelativeToolTip": "DataStructure\\DynamicBuff.cs",
-              "ViewState": "AQIAAJ0AAAAAAAAAAAAUwKoAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-01T15:23:07.946Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Pool.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Pooling\\Pool.cs",
-              "RelativeDocumentMoniker": "Pooling\\Pool.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Pooling\\Pool.cs",
-              "RelativeToolTip": "Pooling\\Pool.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAkwBAAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T19:11:29.852Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "UserIOError.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Networking\\UserIOError.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\UserIOError.cs",
               "RelativeDocumentMoniker": "Networking\\UserIOError.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Networking\\UserIOError.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\UserIOError.cs",
               "RelativeToolTip": "Networking\\UserIOError.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvwoAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -199,24 +216,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Accepter.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Networking\\Accepter.cs",
-              "RelativeDocumentMoniker": "Networking\\Accepter.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Networking\\Accepter.cs",
-              "RelativeToolTip": "Networking\\Accepter.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAWwBIAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T17:00:36.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "TakeRecievedData.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Networking\\TakeRecievedData.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\TakeRecievedData.cs",
               "RelativeDocumentMoniker": "Networking\\TakeRecievedData.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Networking\\TakeRecievedData.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\TakeRecievedData.cs",
               "RelativeToolTip": "Networking\\TakeRecievedData.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvwgAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -225,48 +229,47 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAUwA0AAAAgAAAA",
+              "DocumentIndex": 14,
+              "Title": "Accepter.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\Accepter.cs",
+              "RelativeDocumentMoniker": "Networking\\Accepter.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\Accepter.cs",
+              "RelativeToolTip": "Networking\\Accepter.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAWwBIAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T16:58:22.475Z"
+              "WhenOpened": "2024-05-02T17:00:36.389Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PoolingObjects.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Pooling\\PoolingObjects.cs",
-              "RelativeDocumentMoniker": "Pooling\\PoolingObjects.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Pooling\\PoolingObjects.cs",
-              "RelativeToolTip": "Pooling\\PoolingObjects.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAswAIAAAAjAAAA",
+              "DocumentIndex": 12,
+              "Title": "Root.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Root.cs",
+              "RelativeDocumentMoniker": "Root.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Root.cs",
+              "RelativeToolTip": "Root.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAABGwBsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T15:26:55.877Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-25T06:53:26.29Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "Decoder.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Conversion\\Decoder.cs",
-              "RelativeDocumentMoniker": "Conversion\\Decoder.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Conversion\\Decoder.cs",
-              "RelativeToolTip": "Conversion\\Decoder.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA+AAAA",
+              "Title": "Test.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Test.cs",
+              "RelativeDocumentMoniker": "Test.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Test.cs",
+              "RelativeToolTip": "Test.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAywEMAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T08:59:04.574Z"
+              "WhenOpened": "2024-05-25T08:36:15.498Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 11,
               "Title": "Etcetera.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Program\\Etcetera.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Program\\Etcetera.cs",
               "RelativeDocumentMoniker": "Program\\Etcetera.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Program\\Etcetera.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Program\\Etcetera.cs",
               "RelativeToolTip": "Program\\Etcetera.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -275,26 +278,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 15,
-              "Title": "Networking.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Networking\\Networking.cs",
-              "RelativeDocumentMoniker": "Networking\\Networking.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Networking\\Networking.cs",
-              "RelativeToolTip": "Networking\\Networking.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
+              "Title": "BasicPool.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Pooling\\BasicPool.cs",
+              "RelativeDocumentMoniker": "Pooling\\BasicPool.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Pooling\\BasicPool.cs",
+              "RelativeToolTip": "Pooling\\BasicPool.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAQwAQAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T17:16:39.829Z"
+              "WhenOpened": "2024-06-02T09:04:55.927Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "Conversion.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Conversion\\Conversion.cs",
-              "RelativeDocumentMoniker": "Conversion\\Conversion.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\sex\\Conversion\\Conversion.cs",
-              "RelativeToolTip": "Conversion\\Conversion.cs",
-              "ViewState": "AQIAAKcAAAAAAAAAAAAmwKsAAAAJAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAUwA0AAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T04:14:21.887Z"
+              "WhenOpened": "2024-05-02T16:58:22.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Networking.cs",
+              "DocumentMoniker": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\Networking.cs",
+              "RelativeDocumentMoniker": "Networking\\Networking.cs",
+              "ToolTip": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\Networking\\Networking.cs",
+              "RelativeToolTip": "Networking\\Networking.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T17:16:39.829Z"
             }
           ]
         }

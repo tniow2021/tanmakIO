@@ -27,43 +27,46 @@ namespace sex.Conversion
         }
         //개별 타입
         //int
-        public static unsafe void Encode(Int32 value, MemoryStream ms)
+        public static unsafe void Encode(Int32 value, Span<byte> span, ref int offset)
         {
             byte* valuePtr = (byte*)&value;
-            ms.WriteByte(*(valuePtr));
-            ms.WriteByte(*(valuePtr + 1));
-            ms.WriteByte(*(valuePtr + 2));
-            ms.WriteByte(*(valuePtr + 3));
+            span[offset + 0] = *(valuePtr + 0);
+            span[offset + 1] = *(valuePtr + 1);
+            span[offset + 2] = *(valuePtr + 2);
+            span[offset + 3] = *(valuePtr + 3);
+            offset += 4;
         }
-        public static unsafe void Decode(out int value, MemoryStream ms)
+        public static unsafe void Decode(out int value, Span<byte> span, ref int offset)
         {
             int v;
             byte* ptr = (byte*)&v;
-            *ptr = (byte)ms.ReadByte();
-            *(ptr + 1) = (byte)ms.ReadByte();
-            *(ptr + 2) = (byte)ms.ReadByte();
-            *(ptr + 3) = (byte)ms.ReadByte();
+            *(ptr + 0) = span[offset + 0];
+            *(ptr + 1) = span[offset + 1];
+            *(ptr + 2) = span[offset + 2];
+            *(ptr + 3) = span[offset + 3];
             value = v;
+            offset += 4;
         }
         //float
-        public static unsafe void Encode(float value, MemoryStream ms)
+        public static unsafe void Encode(float value, Span<byte> span, ref int offset)
         {
             byte* valuePtr = (byte*)&value;
-
-            ms.WriteByte(*(valuePtr));
-            ms.WriteByte(*(valuePtr + 1));
-            ms.WriteByte(*(valuePtr + 2));
-            ms.WriteByte(*(valuePtr + 3));
+            span[offset + 0] = *(valuePtr + 0);
+            span[offset + 1] = *(valuePtr + 1);
+            span[offset + 2] = *(valuePtr + 2);
+            span[offset + 3] = *(valuePtr + 3);
+            offset += 4;
         }
-        public static unsafe void Decode(out float value, MemoryStream ms)
+        public static unsafe void Decode(out float value, Span<byte> span, ref int offset)
         {
             float v;
             byte* ptr = (byte*)&v;
-            *ptr = (byte)ms.ReadByte();
-            *(ptr + 1) = (byte)ms.ReadByte();
-            *(ptr + 2) = (byte)ms.ReadByte();
-            *(ptr + 3) = (byte)ms.ReadByte();
-            value= v;
+            *(ptr + 0) = span[offset + 0];
+            *(ptr + 1) = span[offset + 1];
+            *(ptr + 2) = span[offset + 2];
+            *(ptr + 3) = span[offset + 3];
+            value = v;
+            offset += 4;
         }
 
         //double
@@ -74,7 +77,7 @@ namespace sex.Conversion
         }
         public static void Decode(out bool value, MemoryStream ms)
         {
-            value=(ms.ReadByte() == 0) ? false : true;
+            value = (ms.ReadByte() == 0) ? false : true;
         }
         //string
         public static void Encode(string s, MemoryStream ms)
@@ -126,7 +129,7 @@ namespace sex.Conversion
             if (sp.Length != lenght)
             {
                 int temp = lenght;
-                ms.Position-=sizeof(Int32);
+                ms.Position -= sizeof(Int32);
                 BaseType.Encode(lenght, ms);
                 return temp;
             }
@@ -139,35 +142,40 @@ namespace sex.Conversion
     }
     public interface Convertible
     {
-        public abstract static int GetMinLength();
-        public void Encode(MemoryStream ms);
-        public void Decode(MemoryStream ms);
+        public abstract short GetLength();
+        public abstract short GetTypeNumber();
+        public abstract void Encode(Span<byte> span, ref int offset);
+        public abstract void Decode(Span<byte> span, ref int offset);
     }
     public static class FixedType
     {
-        public struct Vecter3Int : Convertible
+        public class Vecter3Int : Convertible
         {
-            public const int length = sizeof(Int32) * 3;
+            public const short length = sizeof(Int32) * 3;
             public Int32 x, y, z;
             public Vecter3Int(Int32 _x, Int32 _y, Int32 _z)
             {
                 x = _x; y = _y; z = _z;
             }
-            public static int GetMinLength()
+            public short GetLength()
             {
                 return length;
             }
-            public void Encode(MemoryStream ms)
+            public short GetTypeNumber()
             {
-                BaseType.Encode(x, ms);
-                BaseType.Encode(y, ms);
-                BaseType.Encode(z, ms);
+                return 1;
             }
-            public void Decode(MemoryStream ms)
+            public void Encode(Span<byte> span, ref int offset)
             {
-                BaseType.Decode(out x, ms);
-                BaseType.Decode(out y, ms);
-                BaseType.Decode(out z, ms);
+                BaseType.Encode(x, span, ref offset);
+                BaseType.Encode(y, span, ref offset);
+                BaseType.Encode(z, span, ref offset);
+            }
+            public void Decode(Span<byte> span, ref int offset)
+            {
+                BaseType.Decode(out x, span, ref offset);
+                BaseType.Decode(out y, span, ref offset);
+                BaseType.Decode(out z, span, ref offset);
             }
         }
         //public class asasdad:Convertible
@@ -176,6 +184,7 @@ namespace sex.Conversion
         //    static int ww = Vecter3Int.GetMinLength()*3;
         //}
     }
+    /*
     public static class DynamicType
     {
         public static bool Encode<T>(List<T> sp, MemoryStream ms) where T : Convertible
@@ -231,13 +240,5 @@ namespace sex.Conversion
             }
         }
     }
-    //public class Decoder
-    //{
-        
-    //    public IsSuccess Decode(Span<byte>sb,out Convertible cv)
-    //    {
-    //        ConversionTable.Decode[3]+=
-    //        return IsSuccess.Success;
-    //    }
-    //}
+    */
 }
