@@ -2,11 +2,11 @@
 {
     public class PoolStatistics
     {
-        public int minCount;
-        public int maxCount;
-        public int emptyErrorCount;
-        public int allNewCount;
-        public int maxErrorCount;
+        public UInt32 minCount;
+        public UInt32 maxCount;
+        public UInt32 emptyErrorCount;
+        public UInt32 allNewCount;
+        public UInt32 maxErrorCount;
         public PoolStatistics()
         {
             minCount = 0; maxCount = 0; emptyErrorCount = 0; allNewCount = 0; maxErrorCount = 0;

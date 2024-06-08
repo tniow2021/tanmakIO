@@ -1,7 +1,5 @@
 ﻿using System.Net.Sockets;
 using System.Net;
-using sex;
-
 namespace sex.Networking
 {
     public class Accepter: Machine

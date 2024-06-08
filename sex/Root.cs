@@ -17,10 +17,10 @@ namespace sex
 
             //아이디와 스레드 안정성... 어떨게해야좋을 것인가.
             Func<byte[]> fb = () => { return new byte[10000]; };
-            byte10000arrayPool = poolEngine.CreateBasicTypePool(fb,n:100, id:1);
+            byte10000arrayPool = poolEngine.CreateBasicTypePool(fb,n:100);
 
             Func<UserIO>ui = () => { return new UserIO(packetSizeLimit:1024); };
-            UserIOPool = poolEngine.CreatePool<UserIO>(ui, n: 100, id: 2);
+            UserIOPool = poolEngine.CreatePool<UserIO>(ui, n: 100);
         }
         
     }

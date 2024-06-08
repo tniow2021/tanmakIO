@@ -1,6 +1,4 @@
-﻿using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Text;
 
 namespace sex.Conversion
 {

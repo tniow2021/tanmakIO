@@ -1,65 +1,70 @@
-﻿using sex.Pooling;
-
-namespace sex.Pooling
+﻿namespace sex.Pooling
 {
     public class BasicPool<T> :IPool<T> //where T : class
     {
         T[] arr;
-        int top = -1;
+        public UInt32 count;
+        UInt32 lastIndex;
         Func<T> constructor;
         public PoolStatistics statistics = new PoolStatistics();
-        public BasicPool(Func<T> constructor,int n)
+        public BasicPool(Func<T> constructor, int n)
         {
             this.constructor = constructor;
             arr = new T[n];
             if (arr == null)
                 throw new Exception("pool error 1");
-            
+
+            count = 0;
             for (int i = 0; i < n; i++)
             {
-                T t = constructor();
+                var t = constructor();
                 if (t != null)
                 {
-                    top++;
+                    count++;
                     arr[i] = t;
                 }
                 else
-                    throw new Exception("pool error 2");
+                    throw new Exception("pool error 2-2");
             }
-            statistics.allNewCount= top + 1;
-            statistics.maxCount = top+1;
-            statistics.minCount = top+1;
+            lastIndex = (UInt32)arr.Length - 1;
+
+            statistics.allNewCount = count;
+            statistics.maxCount = count;
+            statistics.minCount = count;
         }
         public T GetBlock()
         {
-            if (top + 1 > 0)
+            if (count > 0)
             {
-                T t = arr[top];
-                top--;
-                if (statistics.minCount > top + 1)
-                    statistics.minCount = top + 1;
+                T t = arr[count - 1];
+                count--;
+
+                if (statistics.minCount > count)
+                    statistics.minCount = count;
                 return t;
             }
             else
             {
                 statistics.emptyErrorCount++;
                 statistics.allNewCount++;
-                return constructor();
+                var t = constructor();
+                return t;
             }
         }
         public void RepayBlock(T t)
         {
             if (t != null)
             {
-                if (top >= arr.Length - 1)
+                if (count > lastIndex)
                 {
                     statistics.maxErrorCount++;
                     return;
                 }
-                top++;
-                arr[top] = t;
-                if (statistics.maxCount < top + 1)
-                    statistics.maxCount = top + 1;
+                arr[count] = t;
+                count++;
+
+                if (statistics.maxCount < count)
+                    statistics.maxCount = count;
             }
         }
         public PoolStatistics GetStatistics()
@@ -68,3 +73,4 @@ namespace sex.Pooling
         }
     }
 }
+

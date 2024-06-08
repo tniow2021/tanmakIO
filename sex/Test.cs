@@ -24,7 +24,7 @@ namespace sex
             Func<abc> aa = () => { return new abc(); };
             for (int i = 0; i < 30; i++)
             {
-                IPool<abc> abcPool = Root.root.poolEngine.CreateBasicTypePool<abc>(aa, 4000, 2 + i);
+                IPool<abc> abcPool = Root.root.poolEngine.CreateBasicTypePool<abc>(aa, 4000);
                 abc a;
                 for (int j = 0; j < 800; j++)
                 {

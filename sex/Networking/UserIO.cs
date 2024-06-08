@@ -1,8 +1,6 @@
 ﻿using sex.Pooling;
 using System.Net.Sockets;
 using sex.DataStructure;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Diagnostics;
 namespace sex.Networking
 {
     public class UserIO : PoolingObjects
