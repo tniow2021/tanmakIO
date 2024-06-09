@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{76D08166-D544-4F9A-B858-DDF2E6445121}|Test.csproj|c:\\users\\user\\documents\\github\\tanmakio\\test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76D08166-D544-4F9A-B858-DDF2E6445121}|Test.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{76D08166-D544-4F9A-B858-DDF2E6445121}|Test.csproj|c:\\users\\user\\documents\\github\\tanmakio\\test\\nonbuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{76D08166-D544-4F9A-B858-DDF2E6445121}|Test.csproj|solutionrelative:nonbuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76D08166-D544-4F9A-B858-DDF2E6445121}|Test.csproj|c:\\users\\user\\documents\\github\\tanmakio\\test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76D08166-D544-4F9A-B858-DDF2E6445121}|Test.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{76D08166-D544-4F9A-B858-DDF2E6445121}|Test.csproj|c:\\users\\user\\documents\\github\\tanmakio\\test\\pool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,17 +38,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "nonbuff.cs",
               "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\nonbuff.cs",
               "RelativeDocumentMoniker": "nonbuff.cs",
               "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\nonbuff.cs",
               "RelativeToolTip": "nonbuff.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAA4wBYAAAAAAAAA",
+              "ViewState": "AQIAACoAAAAAAAAAAADwvwgAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-08T20:14:32.888Z",
               "EditorCaption": ""
@@ -120,13 +120,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
-              "ViewState": "AQIAABAAAAAAAAAAAAAYwBMAAAA8AAAA",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\tanmakIO\\Test\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAA0wBMAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-14T06:54:28.973Z",
               "EditorCaption": ""

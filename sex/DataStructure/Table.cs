@@ -4,19 +4,19 @@
     {
         T[] array;
         public UInt32 maxNumber { get; }
-        public Table(UInt32 highestNumber = 100)
+        public Table(UInt32 highestNumber)
         {
             array = new T[highestNumber + 1];
             maxNumber = highestNumber;
         }
-        public void Register(T obj, int number)
+        public void Register(T obj, int numbering)
         {
-            if (number > maxNumber)
+            if (numbering > maxNumber)
                 throw new Exception();
-            if (array[number] is not null)
+            if (array[numbering] is not null)
                 throw new Exception();
 
-            array[number] = obj;
+            array[numbering] = obj;
         }
         public T Get(int number)
         {

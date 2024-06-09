@@ -1,6 +1,8 @@
-﻿using sex.Networking;
+﻿using sex.Conversion;
+using sex.DataStructure;
+using sex.Networking;
 using sex.Pooling;
-using System;
+using sex.UserDefinedNetPacket;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -14,8 +16,75 @@ namespace sex
     {
         public static void AllTest()
         {
-            PoolTest();
-            UserIOTest();
+            //PoolTest();
+            //UserIOTest();
+            INetStructTest();
+            DecoderTest();
+        }
+        static void INetStructTest()
+        {
+            Vecter3Int s= new Vecter3Int(7,8,9);
+            Span<byte> span = new byte[2000];
+            int i = 0;
+            s.Encode(span, ref i);
+            s.x = 3;
+            i = 0;
+            s.Decode(span,ref i);
+            Console.WriteLine(s.x+" "+s.y+" "+s.z);
+        }
+        static void DecoderTest()
+        {
+            Table<IPool<IPool<INetConvertible>>> table = new Table<IPool<IPool<INetConvertible>>>(1);
+            NetStructTableSetting(table);
+
+            ConvertibleGroup group = new ConvertibleGroup(table);
+            EnDecoder enDecoder = new EnDecoder((INetConvertible data) =>
+            {
+                Vecter3Int mydata = (Vecter3Int)data;
+                
+                Console.WriteLine("됨"+mydata.x+" "+mydata.y+" "+mydata.z);
+            }, group);
+
+            
+
+            DynamicBuff<byte> myBuff = new DynamicBuff<byte>(new byte[10000]);
+            for(int i=0;i<280;i++)
+            {
+                Vecter3Int myData = new Vecter3Int(542551342,-i,81414145);
+                enDecoder.Encode(myBuff, myData);
+            }
+
+            int nByteProcessed = 0;
+            do
+            {
+                if (myBuff.NonCountingRead(out Span<byte> span))
+                {
+                    nByteProcessed = enDecoder.Decode(span);
+                    myBuff.IncreaseReadOffset(nByteProcessed);
+                }
+            }
+            while (nByteProcessed == 0);
+            
+        }
+        static void NetStructTableSetting(Table<IPool<IPool<INetConvertible>>> table)
+        {
+            IPool<IPool<INetConvertible>> pool1 = Root.root.poolEngine.CreateBasicTypePool<IPool<INetConvertible>>(
+                () =>
+                {
+                    return Root.root.poolEngine.CreateBasicTypePool<INetConvertible>(() => { return new Vecter3Int(); }, 20);
+                }, n: 10);
+            Vecter3Int.typeNumber = 0;
+            table.Register(pool1, numbering: 0);
+
+            IPool<IPool<INetConvertible>> pool2 = Root.root.poolEngine.CreateBasicTypePool<IPool<INetConvertible>>(
+            () =>
+            {
+                return Root.root.poolEngine.CreateBasicTypePool<INetConvertible>(() => { return new TestClass(); }, 20);
+            }, n: 10);
+            TestClass.typeNumber = 1;
+            table.Register(pool2, numbering: 1);
+
+
         }
         public static void PoolTest()
         {
