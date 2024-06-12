@@ -17,6 +17,17 @@ static class Program
  
     static void Main()
     {
+        string s = "";
+        while (true)
+        {
+            s=Console.ReadLine();
+            if (s == "sex")
+                break;
+            Console.WriteLine("하아 언조비카이 " + s);
+        }
+    }
+    static void M4ain()
+    {
         int[] a = new int[] { 0,1, 2, 3, 4, 5, 6, 7, 8, 9 };
         var buff=new Test.NonContiguousBuffer<int>(a,8,9,3,0);
         for(int i=0;i<buff.length;i++)

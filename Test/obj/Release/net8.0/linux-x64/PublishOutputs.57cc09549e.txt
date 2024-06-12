@@ -1,0 +1,5 @@
+D:\MY_UNITY\unity_git\tanmakIO\Test\bin\Release\net8.0\linux-x64\publish\Test
+D:\MY_UNITY\unity_git\tanmakIO\Test\bin\Release\net8.0\linux-x64\publish\Test.dll
+D:\MY_UNITY\unity_git\tanmakIO\Test\bin\Release\net8.0\linux-x64\publish\Test.deps.json
+D:\MY_UNITY\unity_git\tanmakIO\Test\bin\Release\net8.0\linux-x64\publish\Test.runtimeconfig.json
+D:\MY_UNITY\unity_git\tanmakIO\Test\bin\Release\net8.0\linux-x64\publish\Test.pdb

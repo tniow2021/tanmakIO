@@ -1,0 +1,15 @@
+D:\MY_UNITY\unity_git\tanmakIO\Test\bin\Release\net8.0\linux-x64\Test
+D:\MY_UNITY\unity_git\tanmakIO\Test\bin\Release\net8.0\linux-x64\Test.deps.json
+D:\MY_UNITY\unity_git\tanmakIO\Test\bin\Release\net8.0\linux-x64\Test.runtimeconfig.json
+D:\MY_UNITY\unity_git\tanmakIO\Test\bin\Release\net8.0\linux-x64\Test.dll
+D:\MY_UNITY\unity_git\tanmakIO\Test\bin\Release\net8.0\linux-x64\Test.pdb
+D:\MY_UNITY\unity_git\tanmakIO\Test\obj\Release\net8.0\linux-x64\Test.GeneratedMSBuildEditorConfig.editorconfig
+D:\MY_UNITY\unity_git\tanmakIO\Test\obj\Release\net8.0\linux-x64\Test.AssemblyInfoInputs.cache
+D:\MY_UNITY\unity_git\tanmakIO\Test\obj\Release\net8.0\linux-x64\Test.AssemblyInfo.cs
+D:\MY_UNITY\unity_git\tanmakIO\Test\obj\Release\net8.0\linux-x64\Test.csproj.CoreCompileInputs.cache
+D:\MY_UNITY\unity_git\tanmakIO\Test\obj\Release\net8.0\linux-x64\Test.sourcelink.json
+D:\MY_UNITY\unity_git\tanmakIO\Test\obj\Release\net8.0\linux-x64\Test.dll
+D:\MY_UNITY\unity_git\tanmakIO\Test\obj\Release\net8.0\linux-x64\refint\Test.dll
+D:\MY_UNITY\unity_git\tanmakIO\Test\obj\Release\net8.0\linux-x64\Test.pdb
+D:\MY_UNITY\unity_git\tanmakIO\Test\obj\Release\net8.0\linux-x64\Test.genruntimeconfig.cache
+D:\MY_UNITY\unity_git\tanmakIO\Test\obj\Release\net8.0\linux-x64\ref\Test.dll
