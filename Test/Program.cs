@@ -17,6 +17,18 @@ static class Program
  
     static void Main()
     {
+
+    }
+    public interface II
+    {
+        public static short n;
+    }
+    class AA:II
+    {
+
+    }
+    static void Mai444n()
+    {
         string s = "";
         while (true)
         {

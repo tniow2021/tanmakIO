@@ -10,12 +10,13 @@ namespace sex.Networking
         static readonly TakeRecievedData emptyEvent2 = (Span<byte> s) => { return 0; };
 
         public Action<UserIOError> errorEvent = emptyEvent;
+        public TakeRecievedData recieveEvent = emptyEvent2;
         Socket sk = emptySock;
         DynamicBuff<byte> dynamicBuff;
         int id;
         int packetSizeLimit;
         SocketAsyncEventArgs SocketArgs;
-        TakeRecievedData recieveEvent = emptyEvent2;
+        
         public UserIO(int packetSizeLimit=1024)
         {
             dynamicBuff=new DynamicBuff<byte> ();
@@ -23,12 +24,11 @@ namespace sex.Networking
             SocketArgs.Completed += new EventHandler<SocketAsyncEventArgs>(Recieve_Completed);
             IsRunning = false;
         }
-        public void SetUserIO(Socket sk, int id,int packetSizeLimit, TakeRecievedData recieveEvent)
+        public void SetUserIO(Socket sk, int id,int packetSizeLimit)
         {
             this.sk = sk;
             this.id = id;
             this.packetSizeLimit = packetSizeLimit;
-            this.recieveEvent = recieveEvent;
         }
 
         // interface method of MultilayerPoolingObjects

@@ -14,14 +14,4 @@ public static class Program
         Thread.Sleep(200000000);
         return 0;
     }
-    static void socketConnectEvent(Socket sk)
-    {
-        SocketAsyncEventArgs args = new SocketAsyncEventArgs();
-        args.SetBuffer(new byte[1024]);
-        args.Completed += (object sender, SocketAsyncEventArgs _args) =>
-        {
-
-        };
-        sk.ReceiveAsync(args);
-    }
 }

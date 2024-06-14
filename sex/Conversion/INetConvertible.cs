@@ -1,4 +1,6 @@
-﻿namespace sex.Conversion
+﻿using System.Runtime.CompilerServices;
+
+namespace sex.Conversion
 {
     public interface INetConvertible
     {

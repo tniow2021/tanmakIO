@@ -6,7 +6,7 @@ namespace sex.Conversion
         Action<INetConvertible> take;
         const byte Identifier = 0b11111111;
         ConvertibleGroup convertibleGroup;
-        public EnDecoder(Action<INetConvertible> take, ConvertibleGroup convertibleGroup)
+        public EnDecoder(ConvertibleGroup convertibleGroup,Action<INetConvertible> take)
         {
             this.take = take;
             this.convertibleGroup = convertibleGroup;

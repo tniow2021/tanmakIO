@@ -23,6 +23,18 @@ namespace sex.Conversion
         //    }
         //    t = v;
         //}
+
+
+        public static unsafe void ptrEncode<T>(T v, byte* ptr, ref int offset)where T:unmanaged
+        {
+            *(T*)(ptr + offset) = v;
+            offset += sizeof(T);
+        }
+        public static unsafe void ptrDecode<T>(out T v, byte* ptr, ref int offset) where T : unmanaged
+        {
+            v = *((T*)(ptr + offset));
+            offset += sizeof(T);
+        }
         //개별 타입
         //int
         public static unsafe void Encode(Int32 value, Span<byte> span, ref int offset)

@@ -4,6 +4,7 @@ using sex.Networking;
 using sex.Pooling;
 using sex.UserDefinedNetPacket;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -18,8 +19,8 @@ namespace sex
         {
             //PoolTest();
             //UserIOTest();
-            INetStructTest();
-            DecoderTest();
+            //INetStructTest();
+            //DecoderTest();
         }
         static void INetStructTest()
         {
@@ -32,59 +33,56 @@ namespace sex
             s.Decode(span,ref i);
             Console.WriteLine(s.x+" "+s.y+" "+s.z);
         }
-        static void DecoderTest()
+        static unsafe void DecoderTest()
         {
-            Table<IPool<IPool<INetConvertible>>> table = new Table<IPool<IPool<INetConvertible>>>(1);
-            NetStructTableSetting(table);
+            var table = Root.root.table;
 
+            int count = 0;
             ConvertibleGroup group = new ConvertibleGroup(table);
-            EnDecoder enDecoder = new EnDecoder((INetConvertible data) =>
-            {
-                Vecter3Int mydata = (Vecter3Int)data;
-                
-                Console.WriteLine("됨"+mydata.x+" "+mydata.y+" "+mydata.z);
-            }, group);
+            EnDecoder enDecoder = new EnDecoder(group,
+                (INetConvertible data) =>{
+                    Vecter3Int mydata = (Vecter3Int)data;
+                    count++;
+                    group.ReturnBlock(data);
+                }
+            );
 
-            
 
-            DynamicBuff<byte> myBuff = new DynamicBuff<byte>(new byte[10000]);
-            for(int i=0;i<280;i++)
-            {
-                Vecter3Int myData = new Vecter3Int(542551342,-i,81414145);
-                enDecoder.Encode(myBuff, myData);
-            }
+            Stopwatch sw = new Stopwatch();
 
-            int nByteProcessed = 0;
-            do
+            DynamicBuff<byte> myBuff = new DynamicBuff<byte>(new byte[1000000]);
+            Vecter3Int myData = new Vecter3Int(0, 0, 0);
+            sw.Start();
+            for (int c = 0; c < 100; c++)
             {
+                for (int i = 0; i < 100000; i++)
+                {
+                    myData.y = i;
+                    if(enDecoder.Encode(myBuff, myData))
+                    {
+
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    //if(myBuff.Write(3,out Span<byte>span))
+                    //{
+                    //    span[0] = 0b11111111;
+                    //    span[1] = 0b11111111;
+                    //    span[2] = 0b11111111;
+                    //}
+                }
+                //Console.WriteLine("ssssssssssssss");
+                int nByteProcessed = 0;
                 if (myBuff.NonCountingRead(out Span<byte> span))
                 {
                     nByteProcessed = enDecoder.Decode(span);
                     myBuff.IncreaseReadOffset(nByteProcessed);
                 }
             }
-            while (nByteProcessed == 0);
-            
-        }
-        static void NetStructTableSetting(Table<IPool<IPool<INetConvertible>>> table)
-        {
-            IPool<IPool<INetConvertible>> pool1 = Root.root.poolEngine.CreateBasicTypePool<IPool<INetConvertible>>(
-                () =>
-                {
-                    return Root.root.poolEngine.CreateBasicTypePool<INetConvertible>(() => { return new Vecter3Int(); }, 20);
-                }, n: 10);
-            Vecter3Int.typeNumber = 0;
-            table.Register(pool1, numbering: 0);
-
-            IPool<IPool<INetConvertible>> pool2 = Root.root.poolEngine.CreateBasicTypePool<IPool<INetConvertible>>(
-            () =>
-            {
-                return Root.root.poolEngine.CreateBasicTypePool<INetConvertible>(() => { return new TestClass(); }, 20);
-            }, n: 10);
-            TestClass.typeNumber = 1;
-            table.Register(pool2, numbering: 1);
-
-
+            sw.Stop();
+            Console.WriteLine("rgrgL " + count + " time:" + sw.ElapsedMilliseconds);
         }
         public static void PoolTest()
         {
