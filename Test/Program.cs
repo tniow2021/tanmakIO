@@ -19,13 +19,16 @@ static class Program
     {
 
     }
-    public interface II
+    public abstract class II
     {
         public static short n;
     }
     class AA:II
     {
-
+        public int Get()
+        {
+            
+        }
     }
     static void Mai444n()
     {
