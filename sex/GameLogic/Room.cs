@@ -1,16 +1,18 @@
 ﻿using sex.Conversion;
 using sex.DataStructure;
+using sex.GameLogic;
 using sex.Networking;
 using sex.UserDefinedNetPacket;
+using sex.Pooling;
 namespace sex.GameLogic
 {
     public class Room
     {
         ConvertibleGroup group;
         User[] users;
-        public Room()
+        public Room(Table<IPool<IPool<INetConvertible>>>table)
         {
-            group = new ConvertibleGroup(Root.root.table);
+            group = new ConvertibleGroup(table);
             users = new User[10];
             EnDecoder enDecoder = new EnDecoder(group,
                 (INetConvertible data) => {
@@ -41,10 +43,21 @@ namespace sex.GameLogic
 
             }
         }
+        public void Update()
+        {
+
+        }
     }
 }
-public struct User
+public struct Usedvsdvr
 {
     public UserIO userIO;
     public EnDecoder enDecoder;
+}
+public class User
+{
+    public string name;
+    public UserIO userIO;
+    public Room? room=null;
+    public int id;
 }

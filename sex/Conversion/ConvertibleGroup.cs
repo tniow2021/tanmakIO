@@ -20,10 +20,14 @@ namespace sex.Conversion
             for (int i = 0; i < superPoolTable.maxNumber+1; i++)
             {
                 var pool = superPoolTable.Get(i);
-                lock (pool)
+                if(pool != null )
                 {
-                    poolArray[i] = pool.GetBlock();
+                    lock (pool)
+                    {
+                        poolArray[i] = pool.GetBlock();
+                    }
                 }
+                
             }
         }
         //public void Assemble()

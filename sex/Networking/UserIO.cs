@@ -7,13 +7,11 @@ namespace sex.Networking
     {
         static readonly Socket emptySock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         static readonly Action<UserIOError> emptyEvent = (UserIOError u) => { };
-        static readonly TakeRecievedData emptyEvent2 = (Span<byte> s) => { return 0; };
 
         public Action<UserIOError> errorEvent = emptyEvent;
-        public TakeRecievedData recieveEvent = emptyEvent2;
+        public TakeRecievedData recieveEvent;
         Socket sk = emptySock;
         DynamicBuff<byte> dynamicBuff;
-        int id;
         int packetSizeLimit;
         SocketAsyncEventArgs SocketArgs;
         
@@ -24,11 +22,11 @@ namespace sex.Networking
             SocketArgs.Completed += new EventHandler<SocketAsyncEventArgs>(Recieve_Completed);
             IsRunning = false;
         }
-        public void SetUserIO(Socket sk, int id,int packetSizeLimit)
+        public void SetUserIO(Socket sk,int packetSizeLimit, TakeRecievedData recieveEvent)
         {
             this.sk = sk;
-            this.id = id;
             this.packetSizeLimit = packetSizeLimit;
+            this.recieveEvent = recieveEvent;
         }
 
         // interface method of MultilayerPoolingObjects
