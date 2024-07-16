@@ -14,16 +14,13 @@ public static class Program
         Test.AllTest();
         Accepter accepter = new Accepter(2024, socketConnectEvent);
 
-        testRoom = new Room(root.table);
-
         Thread.Sleep(200000000);
         return 0;
     }
-    static Room testRoom;
     static void socketConnectEvent(Socket socket)
     {
-        UserIO userIO = new UserIO(packetSizeLimit:1024);
-        EnDecoder enDecoder=new EnDecoder(root.table,)//시발 
-        userIO.SetUserIO(socket,1014,)
+        UserIO userIO = new UserIO(packetSizeLimit: 1024);
+        NetPacketDivider divider=new NetPacketDivider(root.NetPacketMinimumLengthTable,())
+        userIO.SetUserIO(socket, 1014,()=>{)
     }
 }

@@ -1,8 +1,9 @@
 ﻿using sex.DataStructure;
 using sex.Pooling;
 
-namespace sex.Conversion
+namespace sex.Conversion.lagacy
 {
+    /*
     public class ConvertibleGroup
     {
         Table<IPool<IPool<INetConvertible>>> superPoolTable;
@@ -76,4 +77,5 @@ namespace sex.Conversion
             poolArray[c.GetTypeNumber()].RepayBlock(c);
         }
     }
+    */
 }
