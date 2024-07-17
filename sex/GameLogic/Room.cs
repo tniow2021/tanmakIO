@@ -24,6 +24,7 @@ namespace sex.GameLogic
                     Console.WriteLine($"id: {localUSerID}, {v3.x}, {v3.y}, {v3.z}");
                     break;
                 default:
+                    Console.WriteLine("정체불명의 데이터 들어옴.");
                     break;
             }
         }

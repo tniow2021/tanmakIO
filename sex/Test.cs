@@ -28,8 +28,13 @@ namespace sex
             v3.y = 5;
             v3.z = 6;
 
-            user.Send(ref v3);
-            Console.WriteLine("전송함");
+            for(int i=0;i<10;i++)
+            {
+                v3.z += 1;
+                user.Send(ref v3);
+                Console.WriteLine("전송함");
+            }
+            
         }
         //static void INetStructTest()
         //{
@@ -100,7 +105,7 @@ namespace sex
             Func<abc> aa = () => { return new abc(); };
             for (int i = 0; i < 30; i++)
             {
-                IPool<abc> abcPool = Root.root.poolEngine.CreateBasicTypePool<abc>(aa, 4000);
+                IPool<abc> abcPool = Root.root.poolEngine.CreateBasicTypePool<abc>(aa, 4000,ThreadSafe:false);
                 abc a;
                 for (int j = 0; j < 800; j++)
                 {

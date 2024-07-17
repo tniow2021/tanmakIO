@@ -50,10 +50,13 @@ namespace sex.Pooling
         //    return p;
         //}
         int idOffset = 0;
-        public IPool<T>CreateBasicTypePool<T>(Func<T> constructor, int n)
+        public IPool<T>CreateBasicTypePool<T>(Func<T> constructor, int n,bool ThreadSafe)
         {
             IPool<T> p;
-            p = new BasicPool<T>(constructor, n);
+            if(ThreadSafe is true)
+                p=new BasicPool_ThreadSafe<T>(constructor, n);
+            else
+                p = new BasicPool<T>(constructor, n);
             RegisterPool(typeof(T), idOffset, p.GetStatistics());
             idOffset++;
             return p;
