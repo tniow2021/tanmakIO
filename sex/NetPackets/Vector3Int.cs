@@ -1,8 +1,6 @@
 ﻿using sex.Conversion;
-using sex.NetPackets;
-using System;
 
-namespace sex.NetPacket
+namespace sex.NetPackets
 {
     public struct Vector3Int : INetPacket
     {

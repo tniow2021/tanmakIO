@@ -1,22 +1,13 @@
-﻿using sex.Networking;
+﻿using System.Net.Sockets;
 
 namespace sex.GameLogic
 {
     public class FrontRoom
     {
         Room 임시 = new Room();
-        public void Welcome(UserIO userIO)
+        public void Welcome(Socket socket)
         {
-            NetPacketDivider divider =
-                new NetPacketDivider(Root.root.NetPacketMinimumLengthTable, null);
-            userIO.recieveEvent = new TakeRecievedData((Span<byte> span) =>
-            {
-                return divider.Decode(span);
-            }
-            );
-            User user = new User();
-            user.divider = divider;
-            user.userIO = userIO;
+            User user = new User(socket);
 
             임시.AddUser(user);
             user.userIO.ReciveStart();

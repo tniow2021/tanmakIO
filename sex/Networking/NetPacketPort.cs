@@ -1,13 +1,15 @@
 ﻿using sex.DataStructure;
 using sex.NetPackets;
+
 namespace sex.Networking
 {
-    public class NetPacketDivider
+    public class NetPacketPort
     {
         TakeDividedData take;
         const byte Identifier = 0b11111111;
-        Table<int> lengthTable;
-        public NetPacketDivider(Table<int> lengthTable, TakeDividedData take)
+        IntTable lengthTable;
+        public int value = -1;//대체로 아이디저장용
+        public NetPacketPort(IntTable lengthTable, TakeDividedData take)
         {
             this.take = take;
             this.lengthTable = lengthTable;
@@ -36,8 +38,7 @@ namespace sex.Networking
                 c.Encode(span, ref offset);
                 span[offset] = 0b11111111;
 
-                //for (int i = 0; i < span.Length; i++)
-                //    Console.WriteLine(i + " :2: " + span[i]);
+
                 return true;
             }
             return false;
@@ -50,7 +51,7 @@ namespace sex.Networking
             IsData,
             IsUnnown
         }
-        TakeDividedData? temp=null;
+        TakeDividedData? temp = null;
         public void SetTakeEvent(TakeDividedData take)//이 함수는 한 쓰레드만 접근해야함.
         {
             temp = take;
@@ -58,8 +59,6 @@ namespace sex.Networking
         ProcessState mode = ProcessState.IsUnnown;
         public unsafe int Decode(Span<byte> span)
         {
-            //for (int i = 0; i < span.Length; i++)
-            //    Console.WriteLine(i + " : " + span[i]);
 
             if (span.Length < 5)
                 return 0;
@@ -92,17 +91,22 @@ namespace sex.Networking
                 *(t + 0) = span[offset + 2];
                 *(t + 1) = span[offset + 3];
 
-                // Console.WriteLine("아이 씨발 섹스" + typeNumber);
+
                 if (typeNumber < 0 || typeNumber > lengthTable.maxNumber)
                 {
                     nBytesProcessed += 1;
                     continue;
                 }
-                //var convertible = convertibleGroup.GetBlock(typeNumber);
-                int minimumLength = lengthTable.Get(typeNumber);
+
+                IsSuccess ss= lengthTable.Get(typeNumber,out int minimumLength);
+                if(ss is IsSuccess.failure)//타입넘버를 찾을 수 없는 패킷이라면
+                {
+                    nBytesProcessed += 1;
+                    continue;
+                }
                 offset += 4;
 
-                //Console.WriteLine("start0"+ minimumLength+" "+ pactetLength);
+
                 //세부적인 검사
                 if (pactetLength < minimumLength)
                 {
@@ -111,31 +115,29 @@ namespace sex.Networking
                     nBytesProcessed += 1;
                     continue;
                 }
-                //Console.WriteLine("start1");
+
                 if (span.Length - (offset + pactetLength) < 0)//패킷이 다 안들어 있으면 
                 {
                     break;
                 }
-                // Console.WriteLine("start2");
+
                 if ((span[offset + pactetLength] == Identifier) is false)//endIdentifier 체크
                 {
                     //이 경우는 startIdentifier 부터 잘못된것.
                     nBytesProcessed += 1;
                     continue;
                 }
-                //Console.WriteLine("start3");
 
                 //3단계 이동
-                //convertible.Decode(span, ref offset);
                 nBytesProcessed += pactetLength + 1; //패킷의 마지막 바이트는 endIdentifier
 
-                if(temp != null)
+                if (temp != null)
                 {
                     take = temp;
-                    temp= null;
+                    temp = null;
 
                 }
-                take(typeNumber, span, offset);
+                take(value, typeNumber, span, offset);
             }
 
             return nBytesProcessed;

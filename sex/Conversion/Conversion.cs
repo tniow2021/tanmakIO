@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace sex.Conversion
+﻿namespace sex.Conversion
 {
     public static class BaseType
     {

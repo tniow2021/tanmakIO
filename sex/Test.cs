@@ -1,14 +1,8 @@
-﻿using sex.Conversion;
-using sex.DataStructure;
-using sex.Networking;
-using sex.Pooling;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using sex.Pooling;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
+using sex.GameLogic;
+using sex.NetPackets;
 
 namespace sex
 {
@@ -25,7 +19,17 @@ namespace sex
         }
         static void DividerTest()
         {
+            Socket sk = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            sk.Connect(new IPEndPoint(IPAddress.Loopback, 2024));
+            Console.WriteLine("연결함");
+            User user = new User(sk);
+            var v3 = new Vector3Int();
+            v3.x = 4;
+            v3.y = 5;
+            v3.z = 6;
 
+            user.Send(ref v3);
+            Console.WriteLine("전송함");
         }
         //static void INetStructTest()
         //{
@@ -147,10 +151,6 @@ namespace sex
         public class abc
         {
             int a, b, c;
-        }
-        public class dfg : abc
-        {
-            int r, g, s;
         }
     }
 }

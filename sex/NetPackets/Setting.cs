@@ -1,6 +1,4 @@
-﻿using sex.NetPacket;
-
-namespace sex.NetPackets
+﻿namespace sex.NetPackets
 {
     public static class Setting
     {

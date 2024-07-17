@@ -2,25 +2,25 @@
 using System.Net;
 namespace sex.Networking
 {
-    public class Accepter: Machine
+    public class Accepter : Machine
     {
         Socket listener;
         Action<Socket> socketConnectEvent;
+        SocketAsyncEventArgs args;
         public Accepter(ushort portNumber, Action<Socket> socketConnectEvent)
         {
             listener = new Socket(
                 AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             listener.Bind(new IPEndPoint(IPAddress.Any, portNumber));
             this.socketConnectEvent = socketConnectEvent;
-        }
-        
-        bool stop = true;
-        SocketAsyncEventArgs args;
-        public void Init()
-        {
+
+
             args = new SocketAsyncEventArgs();
             args.Completed += new EventHandler<SocketAsyncEventArgs>(CallbackOfArgs);
         }
+
+        bool stop = true;
+
         public IsSuccess Start()
         {
             try
@@ -33,7 +33,7 @@ namespace sex.Networking
                     return IsSuccess.Success;
                 }
                 else return IsSuccess.failure;
-                
+
             }
             catch (Exception e)
             {

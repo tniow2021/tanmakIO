@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace sex.DataStructure
+﻿namespace sex.DataStructure
 {
     public class DynamicBuff<T>
     {

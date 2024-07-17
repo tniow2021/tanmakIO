@@ -2,25 +2,27 @@
 using sex;
 using sex.Conversion;
 using sex.GameLogic;
+using sex.NetPackets;
 using sex.Networking;
-using System.Net.Sockets;
 
 public static class Program
 {
     static Root root;
+    static FrontRoom front;
+    static Program()
+    {
+        root = new Root();
+        front = new FrontRoom();
+    }
     static int Main()
     {
-        root=new Root();
+        sex.Setting.AllSetting();
+
+        Accepter accepter = new Accepter(2024, front.Welcome);
+        accepter.Start();
         Test.AllTest();
-        Accepter accepter = new Accepter(2024, socketConnectEvent);
 
         Thread.Sleep(200000000);
         return 0;
-    }
-    static void socketConnectEvent(Socket socket)
-    {
-        UserIO userIO = new UserIO(packetSizeLimit: 1024);
-        NetPacketDivider divider=new NetPacketDivider(root.NetPacketMinimumLengthTable,())
-        userIO.SetUserIO(socket, 1014,()=>{)
     }
 }

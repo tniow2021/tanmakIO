@@ -3,6 +3,6 @@
     public interface ITable<T>
     {
         public void Register(T obj, int number);
-        public T Get(int number);
+        public IsSuccess Get(int number,out T value);
     }
 }

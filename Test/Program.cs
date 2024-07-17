@@ -17,6 +17,9 @@ static class Program
  
     static void Main()
     {
+        Socket sk = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        sk.Connect(new IPEndPoint(IPAddress.Loopback, 2024));
+        sk.Send(new byte[250]);
 
     }
     public abstract class II
@@ -25,10 +28,7 @@ static class Program
     }
     class AA:II
     {
-        public int Get()
-        {
-            
-        }
+        public int a;
     }
     static void Mai444n()
     {

@@ -1,32 +1,32 @@
 ﻿namespace sex.DataStructure
 {
-    public class Table<T>: ITable<T>
+    public class IntTable : ITable<int>
     {
-        T[] array;
+        int[] array;
         public UInt32 maxNumber { get; }
-        public Table(UInt32 highestNumber)
+        public IntTable(UInt32 highestNumber)
         {
-            array = new T[highestNumber + 1];
+            array = new int[highestNumber + 1];
             maxNumber = highestNumber;
         }
-        public void Register(T obj, int numbering)
+        public void Register(int obj, int numbering)
         {
             if (numbering > maxNumber)
                 throw new Exception();
-            if (array[numbering] is not null)
+            if (array[numbering] != 0)
                 throw new Exception();
 
             array[numbering] = obj;
         }
-        public IsSuccess Get(int number,out T? value)
+        public IsSuccess Get(int number,out int value)
         {
-            var t = array[number];
-            if (t is null)
+            int t = array[number];
+            if (t == 0)
             {
-                value=default(T);
+                value = 0;
                 return IsSuccess.failure;
             }
-            value = t;
+            value = array[t];
             return IsSuccess.Success;
         }
     }
