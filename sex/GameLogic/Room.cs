@@ -22,7 +22,7 @@ namespace sex.GameLogic
                 case (int)EnumNetPacket.Vector3Int:
                     Vector3Int v3 = new Vector3Int(span, ref offset);
                     ii++;
-                    if(ii>1000000)
+                    //if(ii>1000000)
                         Console.WriteLine($"id: {localUSerID}, {v3.x}, {v3.y}, {v3.z}");
                     break;
                 default:

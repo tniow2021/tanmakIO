@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using sex.Networking;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection.Metadata.Ecma335;
@@ -19,9 +20,30 @@ static class Program
     {
         Socket sk = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         sk.Connect(new IPEndPoint(IPAddress.Loopback, 2024));
-        sk.Send(new byte[250]);
 
+        UserIO userIO = new UserIO();
+        userIO.Assemble();
+        NetPacketPort divider =
+            new NetPacketPort(Root.root.NetPacketMinimumLengthTable, null);
+        userIO.SetUserIO(sk, 1024, divider.Decode);
+        userIO.recieveEvent = divider.Decode;
+        this.divider = divider;
+        this.userIO = userIO;
+        this.localID = -1;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public abstract class II
     {
         public static short n;

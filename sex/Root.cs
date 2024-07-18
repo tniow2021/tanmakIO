@@ -27,7 +27,7 @@ namespace sex
             //아이디와 스레드 안정성... 어떨게해야좋을 것인가.
             Func<byte[]> fb = () => { return new byte[10000]; };
             byte10000arrayPool = poolEngine.CreateBasicTypePool(fb, n: 100,ThreadSafe:true);
-            Func<byte[]> fb2 = () => { return new byte[2000]; };
+            Func<byte[]> fb2 = () => { return new byte[1000]; };
             byte2000arrayPool = poolEngine.CreateBasicTypePool(fb2, n: 100, ThreadSafe: true);
 
             Func<UserIO> ui = () => { return new UserIO(packetSizeLimit: 1024); };
