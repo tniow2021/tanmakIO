@@ -36,13 +36,13 @@ namespace sex.Networking
         public void Assemble()
         {
             recieveBuff.SetBuff(Root.root.byte10000arrayPool.GetBlock(), 0, 0);
-            sendBuff.SetBuff(Root.root.byte1000arrayPool.GetBlock(), 0, 0);
+            sendBuff.SetBuff(Root.root.byte2000arrayPool.GetBlock(), 0, 0);
             SocketArgs.SetBuffer(recieveBuff.GetBuff(), 0, recieveBuff.GetNumContiguousSpaces());
         }
         public void Disassemble()
         {
             Root.root.byte10000arrayPool.RepayBlock(recieveBuff.GetBuff());
-            Root.root.byte1000arrayPool.RepayBlock(sendBuff.GetBuff());
+            Root.root.byte2000arrayPool.RepayBlock(sendBuff.GetBuff());
             recieveBuff.SetBuff(null);
             SocketArgs.SetBuffer(null);
         }
@@ -58,7 +58,14 @@ namespace sex.Networking
         // unique method
         public void Send()//임시
         {
-            sk.Send(sendBuff.GetBuff());
+            if(sendBuff.ReadAll(out Span<byte>span))
+            {
+                sk.Send(span);
+            }
+            else
+            {
+                Console.WriteLine("오류");
+            }
         }
 
         public IsSuccess ReciveStart()//이미 비동기함수가 실행중인데 두번 호출되면 안됨.

@@ -8,24 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\gimda\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\학교컴퓨터\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\sex.csproj",
+      "projectUniqueName": "D:\\임시폴더\\git\\tanmakIO\\sex\\sex.csproj",
       "projectName": "sex",
-      "projectPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\sex.csproj",
-      "packagesPath": "C:\\Users\\gimda\\.nuget\\packages\\",
-      "outputPath": "D:\\MY_UNITY\\unity_git\\tanmakIO\\sex\\obj\\",
+      "projectPath": "D:\\임시폴더\\git\\tanmakIO\\sex\\sex.csproj",
+      "packagesPath": "C:\\Users\\학교컴퓨터\\.nuget\\packages\\",
+      "outputPath": "D:\\임시폴더\\git\\tanmakIO\\sex\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\gimda\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\학교컴퓨터\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -71,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

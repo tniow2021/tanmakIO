@@ -2,10 +2,12 @@
 {
     public class DynamicBuff<T>
     {
+        static Action<DynamicBuff<T>> empty = (DynamicBuff<T>a) => { };
         T[] buff =Array.Empty<T>();
         int L;//Length of the buff
         int w;//쓸 위치
         int r;//읽을 위치
+        public Action<DynamicBuff<T>> fullEvent = empty;
         public DynamicBuff(T[] buff)
         {
             this.buff = buff;
@@ -44,7 +46,8 @@
                 Arrange();
                 if(w>=L-1)
                 {
-                    throw new Exception("dynamic buff is max");
+                    fullEvent(this);
+                    //throw new Exception("dynamic buff is max");
                 }
                 w+= plus;
                 return;
@@ -79,6 +82,14 @@
                     w += n;
                     return true;
                 }
+                fullEvent(this);
+                //다시검사
+                if (n <= L - w)
+                {
+                    memory = new Memory<T>(buff, w, n);
+                    w += n;
+                    return true;
+                }
                 memory = Memory<T>.Empty;
                 return false;
             }
@@ -95,6 +106,14 @@
             {
                 //정리
                 Arrange();
+                //다시검사
+                if (n <= L - w)
+                {
+                    span = new Span<T>(buff, w, n);
+                    w += n;
+                    return true;
+                }
+                fullEvent(this);
                 //다시검사
                 if (n <= L - w)
                 {
@@ -143,7 +162,8 @@
             if (w-r>0)
             {
                 span = new Span<T>(buff, r, w - r);
-                r =w;
+                r = 0;
+                w = 0;
                 return true;
             }
             span=Span<T>.Empty;
@@ -154,7 +174,8 @@
             if (w - r > 0)
             {
                 memory = new Memory<T>(buff, r, w - r); 
-                r = w;
+                r = 0;
+                w = 0;
                 return true;
             }
             memory = Memory<T>.Empty;

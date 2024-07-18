@@ -28,11 +28,11 @@ namespace sex
             v3.y = 5;
             v3.z = 6;
 
-            for(int i=0;i<10;i++)
+            for(int i=0;i<1000003;i++)
             {
                 v3.z += 1;
                 user.Send(ref v3);
-                Console.WriteLine("전송함");
+                //Console.WriteLine("전송함");
             }
             
         }
